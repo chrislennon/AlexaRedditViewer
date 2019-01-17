@@ -1,0 +1,36 @@
+service: alexa-reddit
+
+provider:
+  name: aws
+  runtime: nodejs8.10
+  stage: dev
+  region: eu-west-1
+
+functions:
+  alexa:
+    handler: index.handler
+    events:
+      - alexaSkill: ${ssm:alexaRedditId}
+  auth:
+    handler: auth.handler
+    events:
+      - http:
+          path: /
+          method: ANY
+          integration: http-proxy
+          request:
+            uri: https://www.reddit.com/api/v1/authorize
+      - http:
+          path: /token
+          method: ANY
+          integration: http
+          request:
+            uri: https://www.reddit.com/api/v1/access_token
+            template:
+              application/x-www-form-urlencoded: |
+                                                  #set($context.requestOverride.header.Authorization = 'Basic ' + $util.base64Encode("${ssm:redditAppId}:${ssm:redditAppSecret}"))
+                                                  $input.body
+          response:
+            headers:
+              Content-Type: "'application/json'"
+            template: $input.json('$')

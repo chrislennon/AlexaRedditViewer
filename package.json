@@ -1,0 +1,30 @@
+{
+  "name": "alexaredditviewer",
+  "version": "0.0.1",
+  "description": "",
+  "main": "index.js",
+  "dependencies": {
+    "ask-sdk-core": "^2.3.0",
+    "ask-sdk-model": "^1.11.2",
+    "i18next": "^12.1.0",
+    "i18next-sprintf-postprocessor": "^0.2.2",
+    "snoowrap": "^1.15.2"
+  },
+  "devDependencies": {
+    "serverless": "^1.36.1"
+  },
+  "scripts": {
+    "deploy": "./node_modules/.bin/serverless deploy",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/chrislennon/AlexaRedditViewer.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/chrislennon/AlexaRedditViewer/issues"
+  },
+  "homepage": "https://github.com/chrislennon/AlexaRedditViewer#readme"
+}
