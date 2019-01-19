@@ -10,6 +10,7 @@ const sprintf = require('i18next-sprintf-postprocessor')
 
 const FrontPageHandler = require('./intents/FrontPageIntent').FrontPageHandler
 const UserEventHandler = require('./intents/UserEvent').UserEventHandler
+const FeatureUnavailableHandler = require('./intents/FeatureUnavailable').FeatureUnavailableHandler
 
 const LaunchRequestHandler = require('./intents/AMZN/LaunchRequestHandler').LaunchRequestHandler
 const HelpHandler = require('./intents/AMZN/HelpIntent').HelpHandler
@@ -46,6 +47,7 @@ exports.handler = skillBuilder
   .addRequestHandlers(
     LaunchRequestHandler,
     FrontPageHandler,
+    FeatureUnavailableHandler,
     HelpHandler,
     RepeatHandler,
     ExitHandler,

@@ -18,6 +18,7 @@ const languageStrings = {
       BOOKMARK_REMOVE_MESSAGE: 'Bookmark removed.',
       UPVOTE_ADD_MESSAGE: 'Upvoted.',
       UPVOTE_REMOVE_MESSAGE: 'Removed Upvote.',
+      FEATURE_UNAVILALBE: 'This feature is currently unavailable by voice, please use the on-screen buttons',
     }
   },
   'en-US': {
