@@ -65,8 +65,11 @@ function pagerList (posts) {
           "original": `https://www.reddit.com${posts[i].permalink}`,
           "outputType": outputType,
           "strings": {
+              "bookedmarked": posts[i].saved,
+              "upvoted": posts[i].likes,
               "score": posts[i].score.toString(),
               "title": posts[i].title.replace(/[!@#$^&%*()+=\'\"[\]/{}|:<>?,.\\-]/g, ''),
+              "postid": posts[i].id, 
               "subreddit": posts[i].subreddit_name_prefixed,
               "subreddit_logo": '',
               "image": image,

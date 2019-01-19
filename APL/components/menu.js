@@ -7,16 +7,18 @@ const bookmarkContainer = {
   "items": [
     {
       "type": "TouchWrapper",
+      "when": "${data.strings.bookedmarked == false}",
       "onPress": {
         "type": "SendEvent",
         "arguments": [
             "BookmarkSelected",
-            "${payload.bodyTemplate2Data.subreddit}"
+            "${data.strings.postid}"
         ]
       },
       "spacing": 40,
       "item": [{
         "type": "Image",
+        "when": "${data.strings.bookedmarked == false}",
         "source": "https://s3-eu-west-1.amazonaws.com/reddit-alexa-assets/bookmark-o.png",
         "height": 64,
         "width": 64,
@@ -27,18 +29,18 @@ const bookmarkContainer = {
     },
     {
       "type": "TouchWrapper",
-      "when": "${bookmarked == 'true'}",
+      "when": "${data.strings.bookedmarked == true}",
       "onPress": {
         "type": "SendEvent",
         "arguments": [
             "UnBookmarkSelected",
-            "${payload.bodyTemplate2Data.subreddit}"
+            "${data.strings.postid}"
         ]
       },
       "spacing": 40,
       "item": [{
         "type": "Image",
-        "when": "${bookmarked == 'true'}",
+        "when": "${data.strings.bookedmarked == true}",
         "source": "https://s3-eu-west-1.amazonaws.com/reddit-alexa-assets/bookmark.png",
         "height": 64,
         "width": 64,
@@ -67,17 +69,18 @@ const voteContainer = {
   "justifyContent": "end",
   "items": [
     {
-      "when": "${upvoted == 'true'}",
       "type": "TouchWrapper",
+      "when": "${data.strings.upvoted == true}",
       "onPress": {
         "type": "SendEvent",
         "arguments": [
             "UnUpvoteSelected",
-            "${payload.bodyTemplate2Data.id}"
+            "${data.strings.postid}"
         ]
       },
       "item": [{
         "type": "Image",
+        "when": "${data.strings.upvoted == true}",
         "source": "https://s3-eu-west-1.amazonaws.com/reddit-alexa-assets/arrow-circle-up-red.png",
         "scale": "best-fit",
         "width": "64",
@@ -86,15 +89,17 @@ const voteContainer = {
     },
     {  
       "type": "TouchWrapper",
+      "when": "${data.strings.upvoted == null}",
       "onPress": {
         "type": "SendEvent",
         "arguments": [
             "UpvoteSelected",
-            "${payload.bodyTemplate2Data.id}"
+            "${data.strings.postid}"
         ]
       },
       "item": [{
           "type": "Image",
+          "when": "${data.strings.upvoted == null}",
           "source": "https://s3-eu-west-1.amazonaws.com/reddit-alexa-assets/arrow-circle-up-gray.png",
           "scale": "best-fit",
           "width": "64",

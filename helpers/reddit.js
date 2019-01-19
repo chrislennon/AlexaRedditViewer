@@ -105,11 +105,50 @@ function downVotePost (postId, handlerInput) {
   })()
 }
 
+function bookmarkPost (postId, handlerInput) {
+  return (async function () {
+    const accessToken = handlerInput.requestEnvelope.context.System.user.accessToken
+    if (accessToken == undefined){
+      const unlinked = require('./UnlinkedIntent').UnlinkedHandler
+        return unlinked.handle(handlerInput)
+    }
+    let r = new snoowrap({
+        userAgent: 'Alexa for Reddit',
+        accessToken: accessToken
+    })
+    let post = await r.getSubmission(postId)
+    console.log('post', JSON.stringify(post))
+    let vote = await post.save()
+    console.log('vote', JSON.stringify(vote))
+    return vote
+  })()
+}
+
+function unBookmarkPost (postId, handlerInput) {
+  return (async function () {
+    const accessToken = handlerInput.requestEnvelope.context.System.user.accessToken
+    if (accessToken == undefined){
+      const unlinked = require('./UnlinkedIntent').UnlinkedHandler
+        return unlinked.handle(handlerInput)
+    }
+    let r = new snoowrap({
+        userAgent: 'Alexa for Reddit',
+        accessToken: accessToken
+    })
+    let post = await r.getSubmission(postId)
+    console.log('post', JSON.stringify(post))
+    let vote = await post.unsave()
+    console.log('vote', JSON.stringify(vote))
+    return vote
+  })()
+}
 
 
 module.exports = {
     getPostDetailsById,
     upVotePost,
-    downVotePost
+    downVotePost,
+    bookmarkPost,
+    unBookmarkPost
   }
   

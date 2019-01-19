@@ -37,9 +37,11 @@ const pagerDocument = {
                 {
                     "type": "PagerItem",
                     "outputType": "${data.outputType}",
+                    "bookmarked": "${data.strings.bookedmarked}",
                     "hint": "${payload.hint.string}",
                     "title": "${data.strings.title}",
                     "image": "${data.strings.image}",
+                    "postid": "${data.strings.postid}",
                     "score": "${data.strings.score}",
                     "subreddit": "${data.strings.subreddit}",
                     "subreddit_logo": "${data.strings.subreddit_logo}"
