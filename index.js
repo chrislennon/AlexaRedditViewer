@@ -2,7 +2,6 @@
 /* eslint-disable  no-console */
 
 const Alexa = require('ask-sdk-core')
-// const recipes = require('./recipes');
 const i18n = require('i18next')
 const sprintf = require('i18next-sprintf-postprocessor')
 
@@ -11,6 +10,7 @@ const sprintf = require('i18next-sprintf-postprocessor')
 const FrontPageHandler = require('./intents/FrontPageIntent').FrontPageHandler
 const UserEventHandler = require('./intents/UserEvent').UserEventHandler
 const FeatureUnavailableHandler = require('./intents/FeatureUnavailable').FeatureUnavailableHandler
+const RefreshHandler = require('./intents/RefreshIntent').RefreshHandler
 
 const LaunchRequestHandler = require('./intents/AMZN/LaunchRequestHandler').LaunchRequestHandler
 const HelpHandler = require('./intents/AMZN/HelpIntent').HelpHandler
@@ -48,6 +48,7 @@ exports.handler = skillBuilder
     LaunchRequestHandler,
     FrontPageHandler,
     FeatureUnavailableHandler,
+    RefreshHandler,
     HelpHandler,
     RepeatHandler,
     ExitHandler,

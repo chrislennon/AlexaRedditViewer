@@ -22,8 +22,6 @@ https://github.com/reddit-archive/reddit/wiki/OAuth2
 https://www.reddit.com/prefs/apps
 
 ## TODOS
-- Fix up/down vote & bookmark reddit api calls (link to pager details)
-- Implement Intents for vote and bookmark actions
 - Toggle button/data-binding to switch un/voted styles
 - Reimport ask cli intents/utterances
 - Better handling of the multitudes of media formats reddit api returns

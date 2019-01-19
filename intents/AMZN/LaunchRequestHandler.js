@@ -3,7 +3,7 @@ const LaunchRequestHandler = {
     return handlerInput.requestEnvelope.request.type === 'LaunchRequest'
   },
   handle (handlerInput) {
-    const frontPage = require('./FrontPageIntent').FrontPageHandler
+    const frontPage = require('../FrontPageIntent').FrontPageHandler
     return frontPage.handle(handlerInput)
   }
 }
