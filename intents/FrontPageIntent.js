@@ -28,10 +28,12 @@ const FrontPageHandler = {
     const accessToken = handlerInput.requestEnvelope.context.System.user.accessToken
 
     let sortSlot = ''
-    if (handlerInput.requestEnvelope.request.intent){
+    if (handlerInput.requestEnvelope.request.intent) { // lol this nesting -.-
       if (handlerInput.requestEnvelope.request.intent.slots) {
         if (handlerInput.requestEnvelope.request.intent.slots.Sort) { // Remember capitalisation of Sort 😭
-          sortSlot = handlerInput.requestEnvelope.request.intent.slots.Sort.value
+          if (handlerInput.requestEnvelope.request.intent.slots.Sort.value) {
+            sortSlot = handlerInput.requestEnvelope.request.intent.slots.Sort.value
+          }
         }
       }
     }
@@ -76,7 +78,9 @@ const FrontPageHandler = {
         
         let speakOutput = '<speak>'
         speakOutput += requestAttributes.t("FRONT_PAGE")
-        if (sortSlot != '') speakOutput += requestAttributes.t('SORTED_PAGE', sortSlot)
+        if (sortSlot != '') {
+          speakOutput += requestAttributes.t('SORTED_PAGE', sortSlot)
+        }
         speakOutput += '</speak>'
 
         sessionAttributes.speakOutput = speakOutput
@@ -105,7 +109,7 @@ const FrontPageHandler = {
           // .withSimpleCard(cardTitle, sessionAttributes.speakOutput)
           .withShouldEndSession(false)
           .getResponse()
-          
+
       } catch (error) {
         console.log('ERROR: ', error)
         speakOutput = `<speak> ${requestAttributes.t('ERROR_MESSAGE')} </speak>`
