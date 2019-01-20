@@ -17,7 +17,6 @@ function getPostDetailsById (postId, handlerInput) {
         accessToken: accessToken
     })
     let post = await r.getSubmission(postId)
-    console.log('post', JSON.stringify(post))
 
     let output = {
       type: 'image',
@@ -79,9 +78,7 @@ function upVotePost (postId, handlerInput) {
         accessToken: accessToken
     })
     let post = await r.getSubmission(postId)
-    console.log('post', JSON.stringify(post))
     let vote = await post.upvote()
-    console.log('vote', JSON.stringify(vote))
     return vote
   })()
 }
@@ -98,9 +95,7 @@ function downVotePost (postId, handlerInput) {
         accessToken: accessToken
     })
     let post = await r.getSubmission(postId)
-    console.log('post', JSON.stringify(post))
     let vote = await post.unvote()
-    console.log('vote', JSON.stringify(vote))
     return vote
   })()
 }
@@ -117,9 +112,7 @@ function bookmarkPost (postId, handlerInput) {
         accessToken: accessToken
     })
     let post = await r.getSubmission(postId)
-    console.log('post', JSON.stringify(post))
     let vote = await post.save()
-    console.log('vote', JSON.stringify(vote))
     return vote
   })()
 }
@@ -136,9 +129,7 @@ function unBookmarkPost (postId, handlerInput) {
         accessToken: accessToken
     })
     let post = await r.getSubmission(postId)
-    console.log('post', JSON.stringify(post))
     let vote = await post.unsave()
-    console.log('vote', JSON.stringify(vote))
     return vote
   })()
 }
