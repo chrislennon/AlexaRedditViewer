@@ -1,3 +1,24 @@
+## Usage
+
+This skill is only enabled for Alexa devices which have a screen output and are enabled for APL (Alexa Presentation Language)
+
+You require a Reddit account to use this skill. When you enable account linking required by this skill you will be forwarded towards Reddit's oAuth flow. This account linking only asks for permissions related to the actions of this skill, these permissions are:
+
+Read, read access to the users subreddits. 
+Save, the ability to save bookmarks.
+Vote, the ability to vote on posts.
+
+At any time you can revoke is access by visiting https://www.reddit.com/prefs/apps
+
+## Limitations/bugs 
+1. Clicks on buttons vote/bookmark trigger accidental page move [expereinced in simulator] (bug raised by @camiwilliams)
+2. Vote/Bookmark by voice doesn't (yet) work, requires 'GetPage' functionality (believed to be an active feature request)
+3. After vote/bookmark, visibility of the action (change of icon colour) requires refresh of the content
+  - Unknown if this is a limitation, one potential work-around it to resend the entire document
+  - For an ideal user experience GetPage functionality would be required to re-page to the relevent screen.
+4. Reddit produces a large variety of content, whilst these look similar in output to the user, the underlying json from the API can vary - as such some content may not render correctly, in particular gifs & videos (this is in active development)
+5. Alexa account linking did not work out of the box with Reddit's oAuth (workaround in place see [serverless.yml](https://github.com/chrislennon/AlexaRedditViewer/blob/master/serverless.yml#L30)) - raised as a bug under #5710426711
+
 ## Lambda Deploy
 ```
 npm install
@@ -12,20 +33,29 @@ Used in serverless.yml for handling proxy of Reddit oAuth
 
 ```
 aws ssm put-parameter --name alexaRedditId --type String --value amzn1.ask.skill.your-skill-id
+
 aws ssm put-parameter --name redditAppId --type String --value w_redditappid
+
 aws ssm put-parameter --name redditAppSecret --type String --value app-secret-here
 ```
 
-## Reddit oAuth links
-https://github.com/reddit-archive/reddit/wiki/OAuth2
-
-https://www.reddit.com/prefs/apps
+## Reddit oAuth
+- [oAuth spec](https://github.com/reddit-archive/reddit/wiki/OAuth2)
+- [Reddit apps](https://www.reddit.com/prefs/apps)
+- [snoowrap documentation](https://not-an-aardvark.github.io/snoowrap/snoowrap.html)
 
 ## TODOS
-- Toggle button/data-binding to switch un/voted styles
+
 - Reimport ask cli intents/utterances
+
+## Further development
+- Send post to alexa app/card
+- Read title/body
+- Toggle button/data-binding to switch un/voted styles
+- Add show/hide title/text intents and buttons
+- Allow users to open subreddits
+- Show comments within posts
 - Better handling of the multitudes of media formats reddit api returns
-- Test with variety of samples from reddit api
   - Long text body (scrolls correctly)
   - Video (reddit)
   - Video (embedded external)
@@ -38,9 +68,3 @@ https://www.reddit.com/prefs/apps
   - GIF (external)
   - Title only
   - Title and Body
-- Nicer handling of launch Intent and utterences 'ask reddit viewer whats new/hot/best on reddit'
-
-### Stretch Ideas
-- Send post to alexa app/card
-- Read title/body
-- Add show/hide title/text intents and buttons
