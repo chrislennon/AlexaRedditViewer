@@ -9,17 +9,9 @@ const FrontPageHandler = {
            handlerInput.requestEnvelope.request.intent.name === 'FrontPageIntent'
   },
   handle (handlerInput) {
-    const accessToken = handlerInput.requestEnvelope.context.System.user.accessToken
-    let sortSlot = ''
-    if (handlerInput.requestEnvelope.request.intent.slots) {
-      if (handlerInput.requestEnvelope.request.intent.slots.Sort) { // Remember capitalisation of Sort 😭
-        sortSlot = handlerInput.requestEnvelope.request.intent.slots.Sort.value
-      }
-    }
-    
     const requestAttributes = handlerInput.attributesManager.getRequestAttributes()
     const sessionAttributes = handlerInput.attributesManager.getSessionAttributes()
-    
+
     if (!utils.supportsAPL(handlerInput)) {
       return handlerInput.responseBuilder
         .speak(requestAttributes.t('APL_REQUIRED'))
@@ -33,6 +25,17 @@ const FrontPageHandler = {
         .getResponse();
     }
 
+    const accessToken = handlerInput.requestEnvelope.context.System.user.accessToken
+
+    let sortSlot = ''
+    if (handlerInput.requestEnvelope.request.intent){
+      if (handlerInput.requestEnvelope.request.intent.slots) {
+        if (handlerInput.requestEnvelope.request.intent.slots.Sort) { // Remember capitalisation of Sort 😭
+          sortSlot = handlerInput.requestEnvelope.request.intent.slots.Sort.value
+        }
+      }
+    }
+    
     return (async function () {
 
       let posts
@@ -89,10 +92,20 @@ const FrontPageHandler = {
             document : document,
             datasources: data
           })
+          .addDirective({
+            type : 'Alexa.Presentation.APL.ExecuteCommands',
+            token: 'pagerToken',
+            commands: [
+            {
+              "type": "AutoPage",
+              "componentId": "pagerComponentId",
+              "duration": 4000
+            }]
+          })
           // .withSimpleCard(cardTitle, sessionAttributes.speakOutput)
           .withShouldEndSession(false)
           .getResponse()
-        
+          
       } catch (error) {
         console.log('ERROR: ', error)
         speakOutput = `<speak> ${requestAttributes.t('ERROR_MESSAGE')} </speak>`
