@@ -2,6 +2,8 @@
 const snoowrap = require('snoowrap')
 const utils = require('../helpers/utils')
 
+// TODO - (post submission) tidy this file, not all outputs are needed any more and can be confusing
+
 function getPostDetailsById (postId, handlerInput) {
 
   if (!utils.accountUnlinked(handlerInput)) {
