@@ -8,7 +8,6 @@ const RepeatHandler = {
 
     return handlerInput.responseBuilder
       .speak(sessionAttributes.speakOutput)
-      .reprompt(sessionAttributes.repromptSpeech)
       .getResponse()
   }
 }

@@ -10,7 +10,6 @@ const ErrorHandler = {
 
     return handlerInput.responseBuilder
       .speak(requestAttributes.t('ERROR_MESSAGE'))
-      .reprompt(requestAttributes.t('REPROMPT'))
       .getResponse()
   }
 }
