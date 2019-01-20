@@ -57,7 +57,8 @@ const FrontPageHandler = {
         } else if (sortSlot == 'rising'){
           posts = await r.getRising(null, {limit: 10})
         } else if (sortSlot == 'best'){
-          posts = await r.oauthRequest(null, {limit: 10})
+          // redirect to hot 🤫 https://github.com/not-an-aardvark/snoowrap/issues/172
+          posts = await r.getHot(null, {limit: 10})
         } else {
           posts = await r.getHot(null, {limit: 10})
         }
