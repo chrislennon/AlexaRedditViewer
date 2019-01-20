@@ -20,6 +20,7 @@ const SessionEndedRequestHandler = require('./intents/AMZN/SessionEndedRequestHa
 const ErrorHandler = require('./intents/AMZN/Error').ErrorHandler
 const NextHandler = require('./intents/AMZN/NextIntent').NextIntentHandler
 const PreviousHandler = require('./intents/AMZN/PreviousIntent').PreviousIntentHandler
+const FallbackIntentHandler = require('./intents/AMZN/FallbackIntent').FallbackIntentHandler
 
 /* CONSTANTS */
 const skillBuilder = Alexa.SkillBuilders.custom()
@@ -48,6 +49,7 @@ exports.handler = skillBuilder
     LaunchRequestHandler,
     FrontPageHandler,
     FeatureUnavailableHandler,
+    FallbackIntentHandler,
     RefreshHandler,
     HelpHandler,
     RepeatHandler,
