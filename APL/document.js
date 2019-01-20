@@ -42,6 +42,7 @@ const pagerDocument = {
                     "title": "${data.strings.title}",
                     "image": "${data.strings.image}",
                     "postid": "${data.strings.postid}",
+                    "video": "${data.strings.video}",
                     "score": "${data.strings.score}",
                     "subreddit": "${data.strings.subreddit}",
                     "subreddit_logo": "${data.strings.subreddit_logo}"

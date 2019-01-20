@@ -17,7 +17,7 @@ function pagerList (posts) {
           // console.log('posts[i].preview.reddit_video_preview', posts[i].preview.reddit_video_preview)
           if (posts[i].preview.reddit_video_preview.is_gif) {
             // console.log('posts[i].preview.reddit_video_preview.is_gif', posts[i].preview.reddit_video_preview.is_gif)
-            video = posts[i].preview.reddit_video_preview.hls_url
+            video = posts[i].preview.reddit_video_preview.fallback_url
             // console.log('video', video)
           }
         }
@@ -27,7 +27,7 @@ function pagerList (posts) {
         // console.log('posts[i].is_video', posts[i].is_video)
         if (posts[i].secure_media) {
           // console.log('posts[i].secure_media', posts[i].secure_media)
-          video = posts[i].secure_media.reddit_video.hls_url
+          video = posts[i].secure_media.reddit_video.fallback_url
           // console.log('video', video)
         }
       }

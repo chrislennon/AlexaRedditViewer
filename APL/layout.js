@@ -17,6 +17,10 @@ const layout = {
                 "type": "string"
             },
             {
+                "name": "video",
+                "type": "string"
+            },
+            {
                 "name": "score",
                 "type": "string"
             },
@@ -84,10 +88,22 @@ const layout = {
                 "items": [
                     {
                         "type": "Image",
+                        "when": "${video == ''}",
                         "source": "${image == '' ? '@pagesBackground' : image}",
                         "scale": "best-fit",
                         "width": "100vw",
                         "height": "100vh",
+                        "position": "absolute"
+                    },
+                    {
+                        "type": "Video",
+                        "when": "${image == ''}",
+                        "source": "${video}",
+                        "scale": "best-fit",
+                        "width": "100vw",
+                        "height": "100vh",
+                        "repeatCount": -1,
+                        "autoplay": true,
                         "position": "absolute"
                     },
                     {
@@ -102,19 +118,10 @@ const layout = {
                         "grow": 1,
                         "justifyContent": "${viewport.shape == 'round' ? 'center' : 'end'}",
                         "items": [
-                            {
-                                "type": "Video",
-                                "when": "${video != ''}",
-                                "source": "${video}",
-                                "scale": "best-fit",
-                                "width": "100vw",
-                                "height": "100vh",
-                                "position": "absolute"
-                            },
+                            
                             {
                                 "type": "Frame",
-                                "backgroundColor": "rgba(0,0,0,0.1)",
-                                "when": "${image != ''}",
+                                "backgroundColor": "rgba(0,0,0,0.2)",
                                 "item": [{
                                     "paddingLeft": "@marginLeft",
                                     "paddingRight": "@marginRight",
@@ -147,6 +154,10 @@ const layout = {
             },
             {
                 "name": "image",
+                "type": "string"
+            },
+            {
+                "name": "video",
                 "type": "string"
             },
             {
@@ -297,6 +308,10 @@ const layout = {
                 "type": "string"
             },
             {
+                "name": "video",
+                "type": "string"
+            },
+            {
                 "name": "score",
                 "type": "string"
             },
@@ -423,9 +438,11 @@ const layout = {
                 "hint": "${hint}",
                 "title": "${data.strings.title}",
                 "image": "${data.strings.image}",
+                "video": "${data.strings.video}",
                 "score": "${data.strings.score}",
                 "subreddit": "${data.strings.subreddit}",
-                "subreddit_logo": "${data.strings.subreddit_logo}"
+                "subreddit_logo": "${data.strings.subreddit_logo}",
+                "text": "${data.strings.text}"
             },
             {
                 "type": "TitleBody",
@@ -433,9 +450,11 @@ const layout = {
                 "hint": "${hint}",
                 "title": "${data.strings.title}",
                 "image": "${data.strings.image}",
+                "video": "${data.strings.video}",
                 "score": "${data.strings.score}",
                 "subreddit": "${data.strings.subreddit}",
-                "subreddit_logo": "${data.strings.subreddit_logo}"
+                "subreddit_logo": "${data.strings.subreddit_logo}",
+                "text": "${data.strings.text}"
             },
             {
                 "type": "TitleOnly",
@@ -443,9 +462,11 @@ const layout = {
                 "hint": "${hint}",
                 "title": "${data.strings.title}",
                 "image": "${data.strings.image}",
+                "video": "${data.strings.video}",
                 "score": "${data.strings.score}",
                 "subreddit": "${data.strings.subreddit}",
-                "subreddit_logo": "${data.strings.subreddit_logo}"
+                "subreddit_logo": "${data.strings.subreddit_logo}",
+                "text": "${data.strings.text}"
             }
         ]
     }
