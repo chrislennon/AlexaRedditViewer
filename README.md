@@ -39,16 +39,10 @@ aws ssm put-parameter --name redditAppId --type String --value w_redditappid
 aws ssm put-parameter --name redditAppSecret --type String --value app-secret-here
 ```
 
-## Reddit oAuth
-- [oAuth spec](https://github.com/reddit-archive/reddit/wiki/OAuth2)
-- [Reddit apps](https://www.reddit.com/prefs/apps)
-- [snoowrap documentation](https://not-an-aardvark.github.io/snoowrap/snoowrap.html)
-
-## TODOS
-
-- Reimport ask cli intents/utterances
-
 ## Further development
+- Reimport ask cli intents/utterances
+- Intent for handling more posts (next 10)
+- Show score (code written, design 'choices' needed)
 - Send post to alexa app/card
 - Read title/body
 - Toggle button/data-binding to switch un/voted styles
