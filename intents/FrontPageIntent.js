@@ -10,6 +10,11 @@ const FrontPageHandler = {
   },
   handle (handlerInput) {
     const accessToken = handlerInput.requestEnvelope.context.System.user.accessToken
+    let sortSlot
+    if (handlerInput.requestEnvelope.request.intent.slots.sort) {
+      sortSlot = handlerInput.requestEnvelope.request.intent.slots.Sort.value
+    }
+    
     const requestAttributes = handlerInput.attributesManager.getRequestAttributes()
     const sessionAttributes = handlerInput.attributesManager.getSessionAttributes()
     
@@ -28,14 +33,30 @@ const FrontPageHandler = {
 
     return (async function () {
 
-
+      let posts
       let cardTitle = 'Reddit'
       try {
         let r = new snoowrap({
           userAgent: 'Alexa for Reddit',
           accessToken: accessToken
         })
-        let posts = await r.getHot(null, {limit: 10})
+        console.log('sortSlot',sortSlot)
+        if (sortSlot == 'hot') {
+          posts = await r.getHot(null, {limit: 10})
+        } else if (sortSlot == 'new'){
+          posts = await r.getNew(null, {limit: 10})
+        } else if (sortSlot == 'controversial'){
+          posts = await r.getControversial(null, {limit: 10})
+        } else if (sortSlot == 'top'){
+          posts = await r.getTop(null, {limit: 10})
+        } else if (sortSlot == 'rising'){
+          posts = await r.getRising(null, {limit: 10})
+        } else if (sortSlot == 'best'){
+          posts = await r.oauthRequest(null, {limit: 10})
+        } else {
+          posts = await r.getHot(null, {limit: 10})
+        }
+
         let postData = await format.pagerList(posts)
 
         let hintText = requestAttributes.t('HINT_MESSAGE')
@@ -71,7 +92,7 @@ const FrontPageHandler = {
         
       } catch (error) {
         console.log('ERROR: ', error)
-        speakOutput = `<speak> ${requestAttributes.t('ERROR_MESSAGE')} ${requestAttributes.t('REPROMPT')} </speak>`
+        speakOutput = `<speak> ${requestAttributes.t('ERROR_MESSAGE')} </speak>`
         sessionAttributes.speakOutput = speakOutput
         sessionAttributes.repromptSpeech = requestAttributes.t('REPROMPT')
         handlerInput.attributesManager.setSessionAttributes(sessionAttributes)
