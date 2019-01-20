@@ -10,6 +10,10 @@ Vote, the ability to vote on posts.
 
 At any time you can revoke is access by visiting https://www.reddit.com/prefs/apps
 
+You can swipe though the posts by swiping left and right.
+
+You can Vote/Bookmark using the on-screen buttons.
+
 ## Limitations/bugs 
 1. Clicks on buttons vote/bookmark trigger accidental page move [expereinced in simulator] (bug raised by @camiwilliams)
 2. Vote/Bookmark by voice doesn't (yet) work, requires 'GetPage' functionality (believed to be an active feature request)
