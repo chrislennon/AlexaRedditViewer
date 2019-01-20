@@ -45,6 +45,7 @@ aws ssm put-parameter --name redditAppSecret --type String --value app-secret-he
 
 ## Known issues
 - Scrollview in TitleBody posts may not work correctly (simulator sometimes works)
+- TitleBody body text may not appear, likely same issue as above
 - Unidentified text in place of Next/Previous results in 'feature not available by voice'
 - Video playback seems have issues during paging - particularly when there are multiple videos in the pager
 - User swipes can distrupt AutoPage and vice-versa
