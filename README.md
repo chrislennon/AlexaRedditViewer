@@ -43,8 +43,21 @@ aws ssm put-parameter --name redditAppId --type String --value w_redditappid
 aws ssm put-parameter --name redditAppSecret --type String --value app-secret-here
 ```
 
+## Known issues
+- Bug with the display of Title on TitleOnly & TitleBody posts
+- Scrollview in TitleBody posts may not work correctly (simulator sometimes works)
+- Unidentified text in place of Next/Previous results in 'feature not available by voice'
+
+## Before Submission
+- Usage video & screenshots
+- Add other English stores (UK/IN/AU)
+  - Update app strings
+  - Update intents/utterances
+  - Reimport ask cli intents/utterances
+
 ## Further development
-- Reimport ask cli intents/utterances
+- Add non English localisation strings
+- Find a better way to show hints (currently random on document load)
 - Intent for handling more posts (next 10)
 - Show score (code written, design 'choices' needed)
 - Send post to alexa app/card
