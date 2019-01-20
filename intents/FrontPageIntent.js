@@ -10,9 +10,11 @@ const FrontPageHandler = {
   },
   handle (handlerInput) {
     const accessToken = handlerInput.requestEnvelope.context.System.user.accessToken
-    let sortSlot
-    if (handlerInput.requestEnvelope.request.intent.slots.sort) {
-      sortSlot = handlerInput.requestEnvelope.request.intent.slots.Sort.value
+    let sortSlot = ''
+    if (handlerInput.requestEnvelope.request.intent.slots) {
+      if (handlerInput.requestEnvelope.request.intent.slots.Sort) { // Remember capitalisation of Sort 😭
+        sortSlot = handlerInput.requestEnvelope.request.intent.slots.Sort.value
+      }
     }
     
     const requestAttributes = handlerInput.attributesManager.getRequestAttributes()
@@ -34,13 +36,11 @@ const FrontPageHandler = {
     return (async function () {
 
       let posts
-      let cardTitle = 'Reddit'
       try {
         let r = new snoowrap({
           userAgent: 'Alexa for Reddit',
           accessToken: accessToken
         })
-        console.log('sortSlot',sortSlot)
         if (sortSlot == 'hot') {
           posts = await r.getHot(null, {limit: 10})
         } else if (sortSlot == 'new'){
@@ -71,14 +71,17 @@ const FrontPageHandler = {
           }
         }
         
-        let speakOutput = `<speak>${requestAttributes.t('FRONT_PAGE')}</speak>`
+        let speakOutput = '<speak>'
+        speakOutput += requestAttributes.t("FRONT_PAGE")
+        if (sortSlot != '') speakOutput += requestAttributes.t('SORTED_PAGE', sortSlot)
+        speakOutput += '</speak>'
 
         sessionAttributes.speakOutput = speakOutput
         sessionAttributes.repromptSpeech = requestAttributes.t('REPEAT_MESSAGE');
         handlerInput.attributesManager.setSessionAttributes(sessionAttributes)
 
         return handlerInput.responseBuilder
-          // .speak(sessionAttributes.speakOutput) 
+          .speak(sessionAttributes.speakOutput) 
           // .reprompt(sessionAttributes.repromptSpeech)
           .addDirective({
             type : 'Alexa.Presentation.APL.RenderDocument',
