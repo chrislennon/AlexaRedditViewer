@@ -96,16 +96,16 @@ const FrontPageHandler = {
             document : document,
             datasources: data
           })
-          .addDirective({
-            type : 'Alexa.Presentation.APL.ExecuteCommands',
-            token: 'pagerToken',
-            commands: [
-            {
-              "type": "AutoPage",
-              "componentId": "pagerComponentId",
-              "duration": 4000
-            }]
-          })
+          // .addDirective({
+          //   type : 'Alexa.Presentation.APL.ExecuteCommands',
+          //   token: 'pagerToken',
+          //   commands: [
+          //   {
+          //     "type": "AutoPage",
+          //     "componentId": "pagerComponentId",
+          //     "duration": 4000
+          //   }]
+          // })
           // .withSimpleCard(cardTitle, sessionAttributes.speakOutput)
           .withShouldEndSession(false)
           .getResponse()

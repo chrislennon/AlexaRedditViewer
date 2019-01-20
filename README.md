@@ -44,11 +44,11 @@ aws ssm put-parameter --name redditAppSecret --type String --value app-secret-he
 ```
 
 ## Known issues
-- Bug with the display of Title on TitleOnly & TitleBody posts
 - Scrollview in TitleBody posts may not work correctly (simulator sometimes works)
 - Unidentified text in place of Next/Previous results in 'feature not available by voice'
 - Video playback seems have issues during paging - particularly when there are multiple videos in the pager
 - User swipes can distrupt AutoPage and vice-versa
+  - *AutoPage disabled*
 
 ## Before Submission
 - Usage video & screenshots
@@ -59,6 +59,7 @@ aws ssm put-parameter --name redditAppSecret --type String --value app-secret-he
 
 ## Further development
 - Add non English localisation strings
+- Reimplement subreddit_logo
 - Find a better way to show hints (currently random on document load)
 - Intent for handling more posts (next 10)
 - Show score (code written, design 'choices' needed)
