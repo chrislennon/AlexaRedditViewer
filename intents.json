@@ -1,0 +1,132 @@
+{
+    "interactionModel": {
+        "languageModel": {
+            "invocationName": "reddit viewer",
+            "intents": [
+                {
+                    "name": "AMAZON.FallbackIntent",
+                    "samples": []
+                },
+                {
+                    "name": "AMAZON.CancelIntent",
+                    "samples": []
+                },
+                {
+                    "name": "AMAZON.HelpIntent",
+                    "samples": []
+                },
+                {
+                    "name": "AMAZON.StopIntent",
+                    "samples": []
+                },
+                {
+                    "name": "AMAZON.NavigateHomeIntent",
+                    "samples": []
+                },
+                {
+                    "name": "FrontPageIntent",
+                    "slots": [
+                        {
+                            "name": "Sort",
+                            "type": "SortType"
+                        }
+                    ],
+                    "samples": [
+                        "show my front page sorted by {Sort}",
+                        "show me {Sort}",
+                        "what is {Sort}",
+                        "what is {Sort} on Reddit",
+                        "what is {Sort} of Reddit",
+                        "ask reddit viewer what is {Sort} of my front page",
+                        "what is {Sort} on my front page",
+                        "show me {Sort} posts",
+                        "show my front page by {Sort}",
+                        "sort my front page by {Sort}",
+                        "show me front page",
+                        "open my front page",
+                        "show my front page",
+                        "show me the front page",
+                        "show me my front page"
+                    ]
+                },
+                {
+                    "name": "AMAZON.NextIntent",
+                    "samples": []
+                },
+                {
+                    "name": "AMAZON.PreviousIntent",
+                    "samples": []
+                },
+                {
+                    "name": "VoteIntent",
+                    "slots": [],
+                    "samples": [
+                        "remove vote",
+                        "downvote",
+                        "upvote",
+                        "vote",
+                        "upvote this",
+                        "vote on this"
+                    ]
+                },
+                {
+                    "name": "BookmarkIntent",
+                    "slots": [],
+                    "samples": [
+                        "bookmark post",
+                        "remove bookmark",
+                        "bookmark",
+                        "bookmark this"
+                    ]
+                },
+                {
+                    "name": "RefreshIntent",
+                    "slots": [],
+                    "samples": [
+                        "reload my posts",
+                        "refresh my posts",
+                        "reload",
+                        "refresh"
+                    ]
+                }
+            ],
+            "types": [
+                {
+                    "name": "SortType",
+                    "values": [
+                        {
+                            "name": {
+                                "value": "rising"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "controversial"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "best"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "top"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "new"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "hot"
+                            }
+                        }
+                    ]
+                }
+            ]
+        }
+    }
+}
