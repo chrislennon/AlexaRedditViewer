@@ -51,12 +51,6 @@ aws ssm put-parameter --name redditAppSecret --type String --value app-secret-he
 - User swipes can distrupt AutoPage and vice-versa
   - *AutoPage disabled*
 
-## Before Submission
-- Usage video & screenshots
-- Add other English stores (UK/IN/AU)
-  - Update app strings
-  - Update intents/utterances
-  - Reimport ask cli intents/utterances
 
 ## Further development
 - Add non English localisation strings
