@@ -38,7 +38,8 @@ const pagerDocument = {
                 {
                     "type": "PagerItem",
                     "outputType": "${data.outputType}",
-                    "bookmarked": "${data.strings.bookedmarked}",
+                    "bookmarked": "${data.strings.bookmarked}",
+                    "upvoted": "${data.strings.upvoted}",
                     "hint": "${payload.hint.string}",
                     "title": "${data.strings.title}",
                     "image": "${data.strings.image}",

@@ -4,6 +4,192 @@
     "imports": [
     ],
     "layouts": {
+        "BookmarkContainer" : {
+            "parameters": [
+                {
+                    "name": "postid",
+                    "type": "string"
+                }
+            ],
+            "type": "Container",
+            "direction": "row",
+            "height": 64,
+            "width": "100%",
+            "justifyContent": "end",
+            "items": [
+              {
+                "type": "TouchWrapper",
+                "onPress": {
+                  "type": "SendEvent",
+                  "arguments": [
+                    "BookmarkSelected",
+                    "${postid}"
+                  ]
+                },
+                "spacing": 40,
+                "item": [
+                  {
+                    "type": "Image",
+                    "source": "https://s3-eu-west-1.amazonaws.com/reddit-alexa-assets/bookmark-o.png",
+                    "height": 64,
+                    "width": 64,
+                    "align": "top-right",
+                    "spacing": 40,
+                    "scale": "best-fit"
+                  }
+                ]
+              },
+              {
+                "type": "Image",
+                "source": "",
+                "height": 10,
+                "width": 10,
+                "align": "top-right",
+                "spacing": 40,
+                "scale": "best-fit"
+              }
+            ]
+        },
+        "UnBookmarkContainer" : {
+            "parameters": [
+                {
+                    "name": "postid",
+                    "type": "string"
+                }
+            ],
+            "type": "Container",
+            "direction": "row",
+            "height": 64,
+            "width": "100%",
+            "justifyContent": "end",
+            "items": [
+              {
+                "type": "TouchWrapper",
+                "onPress": {
+                    "type": "SendEvent",
+                    "arguments": [
+                        "UnBookmarkSelected",
+                        "${postid}"
+                    ]
+                },
+                "spacing": 40,
+                "item": [
+                  {
+                    "type": "Image",
+                    "source": "https://s3-eu-west-1.amazonaws.com/reddit-alexa-assets/bookmark.png",
+                    "height": 64,
+                    "width": 64,
+                    "align": "top-right",
+                    "spacing": 40,
+                    "scale": "best-fit"
+                  }
+                ]
+              },
+              {
+                "type": "Image",
+                "source": "",
+                "height": 10,
+                "width": 10,
+                "align": "top-right",
+                "spacing": 40,
+                "scale": "best-fit"
+              }
+            ]
+        },
+        "VoteContainer" : {
+            "parameters": [
+                {
+                    "name": "postid",
+                    "type": "string"
+                },
+                {
+                    "name": "upvoted",
+                    "type": "string"
+                }
+            ],
+            "type": "Container",
+            "direction": "row",
+            "height": 64,
+            "width": "100%",
+            "justifyContent": "end",
+            "items": [
+                {
+                    "type": "TouchWrapper",
+                    "onPress": {
+                        "type": "SendEvent",
+                        "arguments": [
+                            "UpvoteSelected",
+                            "${postid}"
+                        ]
+                    },
+                    "item": [
+                        {
+                            "type": "Image",
+                            "source": "https://s3-eu-west-1.amazonaws.com/reddit-alexa-assets/arrow-circle-up-gray.png",
+                            "scale": "best-fit",
+                            "width": "64",
+                            "height": "64"
+                        }
+                    ]
+                },
+                {
+                    "type": "Image",
+                    "source": "",
+                    "height": 10,
+                    "width": 10,
+                    "align": "top-right",
+                    "spacing": 40,
+                    "scale": "best-fit"
+                }
+            ]
+        },
+        "UnVoteContainer" : {
+            "parameters": [
+                {
+                    "name": "postid",
+                    "type": "string"
+                },
+                {
+                    "name": "upvoted",
+                    "type": "string"
+                }
+            ],
+            "type": "Container",
+            "direction": "row",
+            "height": 64,
+            "width": "100%",
+            "justifyContent": "end",
+            "items": [
+                {
+                    "type": "TouchWrapper",
+                    "onPress": {
+                        "type": "SendEvent",
+                        "arguments": [
+                            "UnUpvoteSelected",
+                            "${postid}"
+                        ]
+                    },
+                    "item": [
+                        {
+                            "type": "Image",
+                            "source": "https://s3-eu-west-1.amazonaws.com/reddit-alexa-assets/arrow-circle-up-red.png",
+                            "scale": "best-fit",
+                            "width": "64",
+                            "height": "64"
+                        }
+                    ]
+                },
+                {
+                    "type": "Image",
+                    "source": "",
+                    "height": 10,
+                    "width": 10,
+                    "align": "top-right",
+                    "spacing": 40,
+                    "scale": "best-fit"
+                }
+            ]
+        },  
         "TitleImage": {
             "when": "${outputType == 'TitleImage'}",
             "parameters": [
@@ -42,6 +228,18 @@
                 {
                     "name": "text",
                     "type": "string"
+                },
+                {
+                    "name": "bookmarked",
+                    "type": "string"
+                },
+                {
+                    "name": "upvoted",
+                    "type": "string"
+                },
+                {
+                    "name": "postid",
+                    "type": "string"
                 }
             ],
             "items": [
@@ -67,130 +265,24 @@
                             "headerAttributionImage": "${subreddit_logo == '' ? '@pagesLogo' : subreddit_logo}"
                         },
                         {
-                            "type": "Container",
-                            "direction": "row",
-                            "height": 64,
-                            "width": "100%",
-                            "justifyContent": "end",
-                            "items": [
-                                {
-                                    "type": "TouchWrapper",
-                                    "when": "${data.strings.bookedmarked == false}",
-                                    "onPress": {
-                                        "type": "SendEvent",
-                                        "arguments": [
-                                            "BookmarkSelected",
-                                            "${data.strings.postid}"
-                                        ]
-                                    },
-                                    "spacing": 40,
-                                    "item": [
-                                        {
-                                            "type": "Image",
-                                            "when": "${data.strings.bookedmarked == false}",
-                                            "source": "https://s3-eu-west-1.amazonaws.com/reddit-alexa-assets/bookmark-o.png",
-                                            "height": 64,
-                                            "width": 64,
-                                            "align": "top-right",
-                                            "spacing": 40,
-                                            "scale": "best-fit"
-                                        }
-                                    ]
-                                },
-                                {
-                                    "type": "TouchWrapper",
-                                    "when": "${data.strings.bookedmarked == true}",
-                                    "onPress": {
-                                        "type": "SendEvent",
-                                        "arguments": [
-                                            "UnBookmarkSelected",
-                                            "${data.strings.postid}"
-                                        ]
-                                    },
-                                    "spacing": 40,
-                                    "item": [
-                                        {
-                                            "type": "Image",
-                                            "when": "${data.strings.bookedmarked == true}",
-                                            "source": "https://s3-eu-west-1.amazonaws.com/reddit-alexa-assets/bookmark.png",
-                                            "height": 64,
-                                            "width": 64,
-                                            "align": "top-right",
-                                            "spacing": 40,
-                                            "scale": "best-fit"
-                                        }
-                                    ]
-                                },
-                                {
-                                    "type": "Image",
-                                    "source": "",
-                                    "height": 10,
-                                    "width": 10,
-                                    "align": "top-right",
-                                    "spacing": 40,
-                                    "scale": "best-fit"
-                                }
-                            ]
+                            "type": "BookmarkContainer",
+                            "when": "${bookmarked == false}",
+                            "postid": "${postid}"
                         },
                         {
-                            "type": "Container",
-                            "direction": "row",
-                            "height": 64,
-                            "width": "100%",
-                            "justifyContent": "end",
-                            "items": [
-                                {
-                                    "type": "TouchWrapper",
-                                    "when": "${data.strings.upvoted == true}",
-                                    "onPress": {
-                                        "type": "SendEvent",
-                                        "arguments": [
-                                            "UnUpvoteSelected",
-                                            "${data.strings.postid}"
-                                        ]
-                                    },
-                                    "item": [
-                                        {
-                                            "type": "Image",
-                                            "when": "${data.strings.upvoted == true}",
-                                            "source": "https://s3-eu-west-1.amazonaws.com/reddit-alexa-assets/arrow-circle-up-red.png",
-                                            "scale": "best-fit",
-                                            "width": "64",
-                                            "height": "64"
-                                        }
-                                    ]
-                                },
-                                {
-                                    "type": "TouchWrapper",
-                                    "when": "${data.strings.upvoted == null}",
-                                    "onPress": {
-                                        "type": "SendEvent",
-                                        "arguments": [
-                                            "UpvoteSelected",
-                                            "${data.strings.postid}"
-                                        ]
-                                    },
-                                    "item": [
-                                        {
-                                            "type": "Image",
-                                            "when": "${data.strings.upvoted == null}",
-                                            "source": "https://s3-eu-west-1.amazonaws.com/reddit-alexa-assets/arrow-circle-up-gray.png",
-                                            "scale": "best-fit",
-                                            "width": "64",
-                                            "height": "64"
-                                        }
-                                    ]
-                                },
-                                {
-                                    "type": "Image",
-                                    "source": "",
-                                    "height": 10,
-                                    "width": 10,
-                                    "align": "top-right",
-                                    "spacing": 40,
-                                    "scale": "best-fit"
-                                }
-                            ]
+                            "type": "UnBookmarkContainer",
+                            "when": "${bookmarked == true}",
+                            "postid": "${postid}"
+                        },
+                        {
+                            "type": "VoteContainer",
+                            "when": "${upvoted == null}",
+                            "postid": "${postid}"
+                        },
+                        {
+                            "type": "UnVoteContainer",
+                            "when": "${upvoted == true}",
+                            "postid": "${postid}"
                         },
                         {
                             "type": "ScrollView",
@@ -240,130 +332,24 @@
                             "headerAttributionImage": "${subreddit_logo == '' ? '@pagesLogo' : subreddit_logo}"
                         },
                         {
-                            "type": "Container",
-                            "direction": "row",
-                            "height": 64,
-                            "width": "100%",
-                            "justifyContent": "end",
-                            "items": [
-                                {
-                                    "type": "TouchWrapper",
-                                    "when": "${data.strings.bookedmarked == false}",
-                                    "onPress": {
-                                        "type": "SendEvent",
-                                        "arguments": [
-                                            "BookmarkSelected",
-                                            "${data.strings.postid}"
-                                        ]
-                                    },
-                                    "spacing": 40,
-                                    "item": [
-                                        {
-                                            "type": "Image",
-                                            "when": "${data.strings.bookedmarked == false}",
-                                            "source": "https://s3-eu-west-1.amazonaws.com/reddit-alexa-assets/bookmark-o.png",
-                                            "height": 64,
-                                            "width": 64,
-                                            "align": "top-right",
-                                            "spacing": 40,
-                                            "scale": "best-fit"
-                                        }
-                                    ]
-                                },
-                                {
-                                    "type": "TouchWrapper",
-                                    "when": "${data.strings.bookedmarked == true}",
-                                    "onPress": {
-                                        "type": "SendEvent",
-                                        "arguments": [
-                                            "UnBookmarkSelected",
-                                            "${data.strings.postid}"
-                                        ]
-                                    },
-                                    "spacing": 40,
-                                    "item": [
-                                        {
-                                            "type": "Image",
-                                            "when": "${data.strings.bookedmarked == true}",
-                                            "source": "https://s3-eu-west-1.amazonaws.com/reddit-alexa-assets/bookmark.png",
-                                            "height": 64,
-                                            "width": 64,
-                                            "align": "top-right",
-                                            "spacing": 40,
-                                            "scale": "best-fit"
-                                        }
-                                    ]
-                                },
-                                {
-                                    "type": "Image",
-                                    "source": "",
-                                    "height": 10,
-                                    "width": 10,
-                                    "align": "top-right",
-                                    "spacing": 40,
-                                    "scale": "best-fit"
-                                }
-                            ]
+                            "type": "BookmarkContainer",
+                            "when": "${bookmarked == 'false'}",
+                            "postid": "${postid}"
                         },
                         {
-                            "type": "Container",
-                            "direction": "row",
-                            "height": 64,
-                            "width": "100%",
-                            "justifyContent": "end",
-                            "items": [
-                                {
-                                    "type": "TouchWrapper",
-                                    "when": "${data.strings.upvoted == true}",
-                                    "onPress": {
-                                        "type": "SendEvent",
-                                        "arguments": [
-                                            "UnUpvoteSelected",
-                                            "${data.strings.postid}"
-                                        ]
-                                    },
-                                    "item": [
-                                        {
-                                            "type": "Image",
-                                            "when": "${data.strings.upvoted == true}",
-                                            "source": "https://s3-eu-west-1.amazonaws.com/reddit-alexa-assets/arrow-circle-up-red.png",
-                                            "scale": "best-fit",
-                                            "width": "64",
-                                            "height": "64"
-                                        }
-                                    ]
-                                },
-                                {
-                                    "type": "TouchWrapper",
-                                    "when": "${data.strings.upvoted == null}",
-                                    "onPress": {
-                                        "type": "SendEvent",
-                                        "arguments": [
-                                            "UpvoteSelected",
-                                            "${data.strings.postid}"
-                                        ]
-                                    },
-                                    "item": [
-                                        {
-                                            "type": "Image",
-                                            "when": "${data.strings.upvoted == null}",
-                                            "source": "https://s3-eu-west-1.amazonaws.com/reddit-alexa-assets/arrow-circle-up-gray.png",
-                                            "scale": "best-fit",
-                                            "width": "64",
-                                            "height": "64"
-                                        }
-                                    ]
-                                },
-                                {
-                                    "type": "Image",
-                                    "source": "",
-                                    "height": 10,
-                                    "width": 10,
-                                    "align": "top-right",
-                                    "spacing": 40,
-                                    "scale": "best-fit"
-                                }
-                            ]
+                            "type": "UnBookmarkContainer",
+                            "when": "${bookmarked == 'true'}",
+                            "postid": "${postid}"
+                        },
+                        {
+                            "type": "VoteContainer",
+                            "when": "${!upvoted}",
+                            "postid": "${postid}"
+                        },
+                        {
+                            "type": "UnVoteContainer",
+                            "when": "${upvoted == 'true'}",
+                            "postid": "${postid}"
                         },
                         {
                             "type": "Container",
@@ -432,6 +418,18 @@
                 {
                     "name": "text",
                     "type": "string"
+                },
+                {
+                    "name": "bookmarked",
+                    "type": "string"
+                },
+                {
+                    "name": "upvoted",
+                    "type": "string"
+                },
+                {
+                    "name": "postid",
+                    "type": "string"
                 }
             ],
             "items": [
@@ -457,130 +455,24 @@
                             "headerAttributionImage": "${subreddit_logo}"
                         },
                         {
-                            "type": "Container",
-                            "direction": "row",
-                            "height": 64,
-                            "width": "100%",
-                            "justifyContent": "end",
-                            "items": [
-                                {
-                                    "type": "TouchWrapper",
-                                    "when": "${data.strings.bookedmarked == false}",
-                                    "onPress": {
-                                        "type": "SendEvent",
-                                        "arguments": [
-                                            "BookmarkSelected",
-                                            "${data.strings.postid}"
-                                        ]
-                                    },
-                                    "spacing": 40,
-                                    "item": [
-                                        {
-                                            "type": "Image",
-                                            "when": "${data.strings.bookedmarked == false}",
-                                            "source": "https://s3-eu-west-1.amazonaws.com/reddit-alexa-assets/bookmark-o.png",
-                                            "height": 64,
-                                            "width": 64,
-                                            "align": "top-right",
-                                            "spacing": 40,
-                                            "scale": "best-fit"
-                                        }
-                                    ]
-                                },
-                                {
-                                    "type": "TouchWrapper",
-                                    "when": "${data.strings.bookedmarked == true}",
-                                    "onPress": {
-                                        "type": "SendEvent",
-                                        "arguments": [
-                                            "UnBookmarkSelected",
-                                            "${data.strings.postid}"
-                                        ]
-                                    },
-                                    "spacing": 40,
-                                    "item": [
-                                        {
-                                            "type": "Image",
-                                            "when": "${data.strings.bookedmarked == true}",
-                                            "source": "https://s3-eu-west-1.amazonaws.com/reddit-alexa-assets/bookmark.png",
-                                            "height": 64,
-                                            "width": 64,
-                                            "align": "top-right",
-                                            "spacing": 40,
-                                            "scale": "best-fit"
-                                        }
-                                    ]
-                                },
-                                {
-                                    "type": "Image",
-                                    "source": "",
-                                    "height": 10,
-                                    "width": 10,
-                                    "align": "top-right",
-                                    "spacing": 40,
-                                    "scale": "best-fit"
-                                }
-                            ]
+                            "type": "BookmarkContainer",
+                            "when": "${bookmarked == false}",
+                            "postid": "${postid}"
                         },
                         {
-                            "type": "Container",
-                            "direction": "row",
-                            "height": 64,
-                            "width": "100%",
-                            "justifyContent": "end",
-                            "items": [
-                                {
-                                    "type": "TouchWrapper",
-                                    "when": "${data.strings.upvoted == true}",
-                                    "onPress": {
-                                        "type": "SendEvent",
-                                        "arguments": [
-                                            "UnUpvoteSelected",
-                                            "${data.strings.postid}"
-                                        ]
-                                    },
-                                    "item": [
-                                        {
-                                            "type": "Image",
-                                            "when": "${data.strings.upvoted == true}",
-                                            "source": "https://s3-eu-west-1.amazonaws.com/reddit-alexa-assets/arrow-circle-up-red.png",
-                                            "scale": "best-fit",
-                                            "width": "64",
-                                            "height": "64"
-                                        }
-                                    ]
-                                },
-                                {
-                                    "type": "TouchWrapper",
-                                    "when": "${data.strings.upvoted == null}",
-                                    "onPress": {
-                                        "type": "SendEvent",
-                                        "arguments": [
-                                            "UpvoteSelected",
-                                            "${data.strings.postid}"
-                                        ]
-                                    },
-                                    "item": [
-                                        {
-                                            "type": "Image",
-                                            "when": "${data.strings.upvoted == null}",
-                                            "source": "https://s3-eu-west-1.amazonaws.com/reddit-alexa-assets/arrow-circle-up-gray.png",
-                                            "scale": "best-fit",
-                                            "width": "64",
-                                            "height": "64"
-                                        }
-                                    ]
-                                },
-                                {
-                                    "type": "Image",
-                                    "source": "",
-                                    "height": 10,
-                                    "width": 10,
-                                    "align": "top-right",
-                                    "spacing": 40,
-                                    "scale": "best-fit"
-                                }
-                            ]
+                            "type": "UnBookmarkContainer",
+                            "when": "${bookmarked == true}",
+                            "postid": "${postid}"
+                        },
+                        {
+                            "type": "VoteContainer",
+                            "when": "${upvoted == null}",
+                            "postid": "${postid}"
+                        },
+                        {
+                            "type": "UnVoteContainer",
+                            "when": "${upvoted == true}",
+                            "postid": "${postid}"
                         },
                         {
                             "type": "ScrollView",
@@ -632,130 +524,24 @@
                             "headerAttributionImage": "${@subreddit_logo == '' ? '@pagesLogo' : '@subreddit_logo'}"
                         },
                         {
-                            "type": "Container",
-                            "direction": "row",
-                            "height": 64,
-                            "width": "100%",
-                            "justifyContent": "end",
-                            "items": [
-                                {
-                                    "type": "TouchWrapper",
-                                    "when": "${data.strings.bookedmarked == false}",
-                                    "onPress": {
-                                        "type": "SendEvent",
-                                        "arguments": [
-                                            "BookmarkSelected",
-                                            "${data.strings.postid}"
-                                        ]
-                                    },
-                                    "spacing": 40,
-                                    "item": [
-                                        {
-                                            "type": "Image",
-                                            "when": "${data.strings.bookedmarked == false}",
-                                            "source": "https://s3-eu-west-1.amazonaws.com/reddit-alexa-assets/bookmark-o.png",
-                                            "height": 64,
-                                            "width": 64,
-                                            "align": "top-right",
-                                            "spacing": 40,
-                                            "scale": "best-fit"
-                                        }
-                                    ]
-                                },
-                                {
-                                    "type": "TouchWrapper",
-                                    "when": "${data.strings.bookedmarked == true}",
-                                    "onPress": {
-                                        "type": "SendEvent",
-                                        "arguments": [
-                                            "UnBookmarkSelected",
-                                            "${data.strings.postid}"
-                                        ]
-                                    },
-                                    "spacing": 40,
-                                    "item": [
-                                        {
-                                            "type": "Image",
-                                            "when": "${data.strings.bookedmarked == true}",
-                                            "source": "https://s3-eu-west-1.amazonaws.com/reddit-alexa-assets/bookmark.png",
-                                            "height": 64,
-                                            "width": 64,
-                                            "align": "top-right",
-                                            "spacing": 40,
-                                            "scale": "best-fit"
-                                        }
-                                    ]
-                                },
-                                {
-                                    "type": "Image",
-                                    "source": "",
-                                    "height": 10,
-                                    "width": 10,
-                                    "align": "top-right",
-                                    "spacing": 40,
-                                    "scale": "best-fit"
-                                }
-                            ]
+                            "type": "BookmarkContainer",
+                            "when": "${bookmarked == false}",
+                            "postid": "${postid}"
                         },
                         {
-                            "type": "Container",
-                            "direction": "row",
-                            "height": 64,
-                            "width": "100%",
-                            "justifyContent": "end",
-                            "items": [
-                                {
-                                    "type": "TouchWrapper",
-                                    "when": "${data.strings.upvoted == true}",
-                                    "onPress": {
-                                        "type": "SendEvent",
-                                        "arguments": [
-                                            "UnUpvoteSelected",
-                                            "${data.strings.postid}"
-                                        ]
-                                    },
-                                    "item": [
-                                        {
-                                            "type": "Image",
-                                            "when": "${data.strings.upvoted == true}",
-                                            "source": "https://s3-eu-west-1.amazonaws.com/reddit-alexa-assets/arrow-circle-up-red.png",
-                                            "scale": "best-fit",
-                                            "width": "64",
-                                            "height": "64"
-                                        }
-                                    ]
-                                },
-                                {
-                                    "type": "TouchWrapper",
-                                    "when": "${data.strings.upvoted == null}",
-                                    "onPress": {
-                                        "type": "SendEvent",
-                                        "arguments": [
-                                            "UpvoteSelected",
-                                            "${data.strings.postid}"
-                                        ]
-                                    },
-                                    "item": [
-                                        {
-                                            "type": "Image",
-                                            "when": "${data.strings.upvoted == null}",
-                                            "source": "https://s3-eu-west-1.amazonaws.com/reddit-alexa-assets/arrow-circle-up-gray.png",
-                                            "scale": "best-fit",
-                                            "width": "64",
-                                            "height": "64"
-                                        }
-                                    ]
-                                },
-                                {
-                                    "type": "Image",
-                                    "source": "",
-                                    "height": 10,
-                                    "width": 10,
-                                    "align": "top-right",
-                                    "spacing": 40,
-                                    "scale": "best-fit"
-                                }
-                            ]
+                            "type": "UnBookmarkContainer",
+                            "when": "${bookmarked == true}",
+                            "postid": "${postid}"
+                        },
+                        {
+                            "type": "VoteContainer",
+                            "when": "${upvoted == null}",
+                            "postid": "${postid}"
+                        },
+                        {
+                            "type": "UnVoteContainer",
+                            "when": "${upvoted == true}",
+                            "postid": "${postid}"
                         },
                         {
                             "type": "Container",
@@ -833,6 +619,18 @@
                 {
                     "name": "text",
                     "type": "string"
+                },
+                {
+                    "name": "bookmarked",
+                    "type": "string"
+                },
+                {
+                    "name": "upvoted",
+                    "type": "string"
+                },
+                {
+                    "name": "postid",
+                    "type": "string"
                 }
             ],
             "items": [
@@ -858,130 +656,24 @@
                             "headerAttributionImage": "${subreddit_logo == '' ? '@pagesLogo' : subreddit_logo}"
                         },
                         {
-                            "type": "Container",
-                            "direction": "row",
-                            "height": 64,
-                            "width": "100%",
-                            "justifyContent": "end",
-                            "items": [
-                                {
-                                    "type": "TouchWrapper",
-                                    "when": "${data.strings.bookedmarked == false}",
-                                    "onPress": {
-                                        "type": "SendEvent",
-                                        "arguments": [
-                                            "BookmarkSelected",
-                                            "${data.strings.postid}"
-                                        ]
-                                    },
-                                    "spacing": 40,
-                                    "item": [
-                                        {
-                                            "type": "Image",
-                                            "when": "${data.strings.bookedmarked == false}",
-                                            "source": "https://s3-eu-west-1.amazonaws.com/reddit-alexa-assets/bookmark-o.png",
-                                            "height": 64,
-                                            "width": 64,
-                                            "align": "top-right",
-                                            "spacing": 40,
-                                            "scale": "best-fit"
-                                        }
-                                    ]
-                                },
-                                {
-                                    "type": "TouchWrapper",
-                                    "when": "${data.strings.bookedmarked == true}",
-                                    "onPress": {
-                                        "type": "SendEvent",
-                                        "arguments": [
-                                            "UnBookmarkSelected",
-                                            "${data.strings.postid}"
-                                        ]
-                                    },
-                                    "spacing": 40,
-                                    "item": [
-                                        {
-                                            "type": "Image",
-                                            "when": "${data.strings.bookedmarked == true}",
-                                            "source": "https://s3-eu-west-1.amazonaws.com/reddit-alexa-assets/bookmark.png",
-                                            "height": 64,
-                                            "width": 64,
-                                            "align": "top-right",
-                                            "spacing": 40,
-                                            "scale": "best-fit"
-                                        }
-                                    ]
-                                },
-                                {
-                                    "type": "Image",
-                                    "source": "",
-                                    "height": 10,
-                                    "width": 10,
-                                    "align": "top-right",
-                                    "spacing": 40,
-                                    "scale": "best-fit"
-                                }
-                            ]
+                            "type": "BookmarkContainer",
+                            "when": "${bookmarked == false}",
+                            "postid": "${postid}"
                         },
                         {
-                            "type": "Container",
-                            "direction": "row",
-                            "height": 64,
-                            "width": "100%",
-                            "justifyContent": "end",
-                            "items": [
-                                {
-                                    "type": "TouchWrapper",
-                                    "when": "${data.strings.upvoted == true}",
-                                    "onPress": {
-                                        "type": "SendEvent",
-                                        "arguments": [
-                                            "UnUpvoteSelected",
-                                            "${data.strings.postid}"
-                                        ]
-                                    },
-                                    "item": [
-                                        {
-                                            "type": "Image",
-                                            "when": "${data.strings.upvoted == true}",
-                                            "source": "https://s3-eu-west-1.amazonaws.com/reddit-alexa-assets/arrow-circle-up-red.png",
-                                            "scale": "best-fit",
-                                            "width": "64",
-                                            "height": "64"
-                                        }
-                                    ]
-                                },
-                                {
-                                    "type": "TouchWrapper",
-                                    "when": "${data.strings.upvoted == null}",
-                                    "onPress": {
-                                        "type": "SendEvent",
-                                        "arguments": [
-                                            "UpvoteSelected",
-                                            "${data.strings.postid}"
-                                        ]
-                                    },
-                                    "item": [
-                                        {
-                                            "type": "Image",
-                                            "when": "${data.strings.upvoted == null}",
-                                            "source": "https://s3-eu-west-1.amazonaws.com/reddit-alexa-assets/arrow-circle-up-gray.png",
-                                            "scale": "best-fit",
-                                            "width": "64",
-                                            "height": "64"
-                                        }
-                                    ]
-                                },
-                                {
-                                    "type": "Image",
-                                    "source": "",
-                                    "height": 10,
-                                    "width": 10,
-                                    "align": "top-right",
-                                    "spacing": 40,
-                                    "scale": "best-fit"
-                                }
-                            ]
+                            "type": "UnBookmarkContainer",
+                            "when": "${bookmarked == true}",
+                            "postid": "${postid}"
+                        },
+                        {
+                            "type": "VoteContainer",
+                            "when": "${upvoted == null}",
+                            "postid": "${postid}"
+                        },
+                        {
+                            "type": "UnVoteContainer",
+                            "when": "${upvoted == true}",
+                            "postid": "${postid}"
                         },
                         {
                             "type": "Container",
@@ -1029,130 +721,24 @@
                             "headerAttributionImage": "${subreddit_logo == '' ? '@pagesLogo' : subreddit_logo}"
                         },
                         {
-                            "type": "Container",
-                            "direction": "row",
-                            "height": 64,
-                            "width": "100%",
-                            "justifyContent": "end",
-                            "items": [
-                                {
-                                    "type": "TouchWrapper",
-                                    "when": "${data.strings.bookedmarked == false}",
-                                    "onPress": {
-                                        "type": "SendEvent",
-                                        "arguments": [
-                                            "BookmarkSelected",
-                                            "${data.strings.postid}"
-                                        ]
-                                    },
-                                    "spacing": 40,
-                                    "item": [
-                                        {
-                                            "type": "Image",
-                                            "when": "${data.strings.bookedmarked == false}",
-                                            "source": "https://s3-eu-west-1.amazonaws.com/reddit-alexa-assets/bookmark-o.png",
-                                            "height": 64,
-                                            "width": 64,
-                                            "align": "top-right",
-                                            "spacing": 40,
-                                            "scale": "best-fit"
-                                        }
-                                    ]
-                                },
-                                {
-                                    "type": "TouchWrapper",
-                                    "when": "${data.strings.bookedmarked == true}",
-                                    "onPress": {
-                                        "type": "SendEvent",
-                                        "arguments": [
-                                            "UnBookmarkSelected",
-                                            "${data.strings.postid}"
-                                        ]
-                                    },
-                                    "spacing": 40,
-                                    "item": [
-                                        {
-                                            "type": "Image",
-                                            "when": "${data.strings.bookedmarked == true}",
-                                            "source": "https://s3-eu-west-1.amazonaws.com/reddit-alexa-assets/bookmark.png",
-                                            "height": 64,
-                                            "width": 64,
-                                            "align": "top-right",
-                                            "spacing": 40,
-                                            "scale": "best-fit"
-                                        }
-                                    ]
-                                },
-                                {
-                                    "type": "Image",
-                                    "source": "",
-                                    "height": 10,
-                                    "width": 10,
-                                    "align": "top-right",
-                                    "spacing": 40,
-                                    "scale": "best-fit"
-                                }
-                            ]
+                            "type": "BookmarkContainer",
+                            "when": "${bookmarked == false}",
+                            "postid": "${postid}"
                         },
                         {
-                            "type": "Container",
-                            "direction": "row",
-                            "height": 64,
-                            "width": "100%",
-                            "justifyContent": "end",
-                            "items": [
-                                {
-                                    "type": "TouchWrapper",
-                                    "when": "${data.strings.upvoted == true}",
-                                    "onPress": {
-                                        "type": "SendEvent",
-                                        "arguments": [
-                                            "UnUpvoteSelected",
-                                            "${data.strings.postid}"
-                                        ]
-                                    },
-                                    "item": [
-                                        {
-                                            "type": "Image",
-                                            "when": "${data.strings.upvoted == true}",
-                                            "source": "https://s3-eu-west-1.amazonaws.com/reddit-alexa-assets/arrow-circle-up-red.png",
-                                            "scale": "best-fit",
-                                            "width": "64",
-                                            "height": "64"
-                                        }
-                                    ]
-                                },
-                                {
-                                    "type": "TouchWrapper",
-                                    "when": "${data.strings.upvoted == null}",
-                                    "onPress": {
-                                        "type": "SendEvent",
-                                        "arguments": [
-                                            "UpvoteSelected",
-                                            "${data.strings.postid}"
-                                        ]
-                                    },
-                                    "item": [
-                                        {
-                                            "type": "Image",
-                                            "when": "${data.strings.upvoted == null}",
-                                            "source": "https://s3-eu-west-1.amazonaws.com/reddit-alexa-assets/arrow-circle-up-gray.png",
-                                            "scale": "best-fit",
-                                            "width": "64",
-                                            "height": "64"
-                                        }
-                                    ]
-                                },
-                                {
-                                    "type": "Image",
-                                    "source": "",
-                                    "height": 10,
-                                    "width": 10,
-                                    "align": "top-right",
-                                    "spacing": 40,
-                                    "scale": "best-fit"
-                                }
-                            ]
+                            "type": "UnBookmarkContainer",
+                            "when": "${bookmarked == true}",
+                            "postid": "${postid}"
+                        },
+                        {
+                            "type": "VoteContainer",
+                            "when": "${upvoted == null}",
+                            "postid": "${postid}"
+                        },
+                        {
+                            "type": "UnVoteContainer",
+                            "when": "${upvoted == true}",
+                            "postid": "${postid}"
                         },
                         {
                             "type": "Container",
@@ -1195,7 +781,10 @@
                     "score": "${data.strings.score}",
                     "subreddit": "${data.strings.subreddit}",
                     "subreddit_logo": "${data.strings.subreddit_logo}",
-                    "text": "${data.strings.text}"
+                    "text": "${data.strings.text}",
+                    "postid" : "${data.strings.postid}",
+                    "upvoted": "${data.strings.upvoted}",
+                    "bookmarked": "${data.strings.bookmarked}"
                 },
                 {
                     "type": "TitleBody",
@@ -1207,7 +796,10 @@
                     "score": "${data.strings.score}",
                     "subreddit": "${data.strings.subreddit}",
                     "subreddit_logo": "${data.strings.subreddit_logo}",
-                    "text": "${data.strings.text}"
+                    "text": "${data.strings.text}",
+                    "postid" : "${data.strings.postid}",
+                    "upvoted": "${data.strings.upvoted}",
+                    "bookmarked": "${data.strings.bookmarked}"
                 },
                 {
                     "type": "TitleOnly",
@@ -1219,7 +811,10 @@
                     "score": "${data.strings.score}",
                     "subreddit": "${data.strings.subreddit}",
                     "subreddit_logo": "${data.strings.subreddit_logo}",
-                    "text": "${data.strings.text}"
+                    "text": "${data.strings.text}",
+                    "postid" : "${data.strings.postid}",
+                    "upvoted": "${data.strings.upvoted}",
+                    "bookmarked": "${data.strings.bookmarked}"
                 }
             ]
         }

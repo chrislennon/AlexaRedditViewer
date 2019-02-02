@@ -65,7 +65,7 @@ function pagerList (posts) {
           "original": `https://www.reddit.com${posts[i].permalink}`,
           "outputType": outputType,
           "strings": {
-              "bookedmarked": posts[i].saved,
+              "bookmarked": posts[i].saved,
               "upvoted": posts[i].likes,
               "score": posts[i].score.toString(),
               "title": posts[i].title.replace(/[!@#$^&%*()+=\'\"[\]/{}|:<>?,.\\-]/g, ''),
