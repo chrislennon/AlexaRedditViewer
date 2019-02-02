@@ -1,0 +1,80 @@
+{
+  "type": "APL",
+  "version": "1.0.0",
+  "imports": [
+  ],
+  "styles" : {
+    "textStyleBase": {
+        "description": "Base font description; set color and core font family",
+        "values": [
+            {
+                "color": "@colorTextPrimary",
+                "fontFamily": "Amazon Ember Display"
+            }
+        ]
+    },
+    "textStyleBase0": {
+        "description": "Thin version of basic font",
+        "extend": "textStyleBase",
+        "values": {
+            "fontWeight": "100"
+        }
+    },
+    "textStyleBase1": {
+        "description": "Light version of basic font",
+        "extend": "textStyleBase",
+        "values": {
+            "fontWeight": "300"
+        }
+    },
+    "mixinBody": {
+        "values": {
+            "fontSize": "@textSizeBody"
+        }
+    },
+    "mixinPrimary": {
+        "values": {
+            "fontSize": "@textSizePrimary"
+        }
+    },
+    "mixinSecondary": {
+        "values": {
+            "fontSize": "@textSizeSecondary"
+        }
+    },
+    "textStylePrimary": {
+        "extend": [
+            "textStyleBase1",
+            "mixinPrimary"
+        ]
+    },
+    "textStyleSecondary": {
+        "extend": [
+            "textStyleBase0",
+            "mixinSecondary"
+        ]
+    },
+    "textStyleBody": {
+        "extend": [
+            "textStyleBase1",
+            "mixinBody"
+        ]
+    },
+    "textStyleSecondaryHint": {
+        "values": {
+            "fontFamily": "Amazon Ember Display",
+            "fontStyle": "italic",
+            "fontSize": "@textSizeSecondaryHint",
+            "color": "@colorTextPrimary"
+        }
+    },
+    "textStyleTitle": {
+        "values": {
+            "fontFamily": "Amazon Ember Display",
+            "fontStyle": "bold",
+            "fontSize": "@textSizeBody",
+            "color": "@colorTextPrimary"
+        }
+    }
+  }
+}

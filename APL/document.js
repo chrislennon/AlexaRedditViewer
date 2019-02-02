@@ -1,27 +1,28 @@
-// AMZ styles & resources
-// Text Forward List Sample & Image Right Detail Sample
-// https://developer.amazon.com/alexa/console/ask/displays
-
-// Custom Layouts
-const pagerLayout = require('./layout').layout
-const pagerStyle = require('./styles').styles
-const pagerResources = require('./resources').resources
-
-const strings = require('../helpers/strings')
-
 const pagerDocument = {
   "type": "APL",
   "version": "1.0",
   "theme": "dark",
   "import": [
       {
-          "name": "alexa-layouts",
-          "version": "1.0.0"
+        "name": "alexa-layouts",
+        "version": "1.0.0"
+      },
+      {
+        "name": "styles",
+        "version": "1.0.0",
+        "source": "https://s3-eu-west-1.amazonaws.com/reddit-alexa-assets/styles.json"
+      },
+      {
+        "name": "layouts",
+        "version": "1.0.0",
+        "source": "https://s3-eu-west-1.amazonaws.com/reddit-alexa-assets/layouts.json"
+      },
+      {
+        "name": "resources",
+        "version": "1.0.0",
+        "source": "https://s3-eu-west-1.amazonaws.com/reddit-alexa-assets/resources.json"
       }
   ],
-  "resources": pagerResources,
-  "styles": pagerStyle,
-  "layouts": pagerLayout,
   "mainTemplate": {
     "parameters": [
         "payload"

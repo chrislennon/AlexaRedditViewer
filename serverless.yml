@@ -6,6 +6,17 @@ provider:
   stage: dev
   region: eu-west-1
 
+plugins:
+  - serverless-s3-deploy
+
+custom:
+  assets:
+    targets:
+      - bucket: reddit-alexa-assets
+        files:
+        - source: ./APL/
+          globs: '**/*.json'
+
 functions:
   alexa:
     handler: index.handler

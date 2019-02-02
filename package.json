@@ -11,10 +11,11 @@
     "snoowrap": "^1.15.2"
   },
   "devDependencies": {
-    "serverless": "^1.36.1"
+    "serverless": "^1.36.1",
+    "serverless-s3-deploy": "^0.8.0"
   },
   "scripts": {
-    "deploy": "./node_modules/.bin/serverless deploy",
+    "deploy": "./node_modules/.bin/serverless deploy && ./node_modules/.bin/serverless s3deploy",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
