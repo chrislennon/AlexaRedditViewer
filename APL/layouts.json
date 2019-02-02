@@ -227,50 +227,6 @@
             ],
             "items": [
                 {
-                    "when": "${viewport.shape == 'round'}",
-                    "type": "Container",
-                    "direction": "column",
-                    "width": "100vw",
-                    "height": "100vh",
-                    "items": [
-                        {
-                            "type": "Image",
-                            "source": "${image == '' ? '@pagesBackground' : image}",
-                            "scale": "best-fit",
-                            "width": "100vw",
-                            "height": "100vh",
-                            "position": "absolute",
-                            "scrim": true
-                        },
-                        {
-                            "type": "AlexaHeader",
-                            "headerTitle": "${subreddit}",
-                            "headerAttributionImage": "${subreddit_logo == '' ? '@pagesLogo' : subreddit_logo}"
-                        },
-                        {
-                            "type": "ActionButtons",
-                            "postid": "${postid}",
-                            "bookmarked": "${bookmarked}",
-                            "upvoted": "${upvoted}"
-                        },
-                        {
-                            "type": "ScrollView",
-                            "height": "100%",
-                            "justifyContent": "${viewport.shape == 'round' ? 'center' : 'end'}",
-                            "item": [
-                                {
-                                    "paddingLeft": "@marginLeft",
-                                    "paddingRight": "@marginRight",
-                                    "type": "Text",
-                                    "text": "${title}",
-                                    "style": "textStyleTitle",
-                                    "align": "${viewport.shape == 'round' ? 'center' : 'left'}"
-                                }
-                            ]
-                        }
-                    ]
-                },
-                {
                     "type": "Container",
                     "width": "100vw",
                     "height": "100vh",
@@ -389,78 +345,6 @@
             ],
             "items": [
                 {
-                    "when": "${viewport.shape == 'round'}",
-                    "type": "Container",
-                    "direction": "column",
-                    "width": "100vw",
-                    "height": "100vh",
-                    "items": [
-                        {
-                            "type": "Image",
-                            "source": "@pagesBackground",
-                            "scale": "best-fit",
-                            "width": "100vw",
-                            "height": "100vh",
-                            "position": "absolute",
-                            "scrim": true
-                        },
-                        {
-                            "type": "AlexaHeader",
-                            "headerTitle": "${subreddit}",
-                            "headerAttributionImage": "${subreddit_logo}"
-                        },
-                        {
-                            "type": "BookmarkContainer",
-                            "when": "${bookmarked == 'false'}",
-                            "postid": "${postid}"
-                        },
-                        {
-                            "type": "UnBookmarkContainer",
-                            "when": "${bookmarked == 'true'}",
-                            "postid": "${postid}"
-                        },
-                        {
-                            "type": "VoteContainer",
-                            "when": "${!upvoted}",
-                            "postid": "${postid}"
-                        },
-                        {
-                            "type": "UnVoteContainer",
-                            "when": "${upvoted == 'true'}",
-                            "postid": "${postid}"
-                        },
-                        {
-                            "type": "ScrollView",
-                            "height": "100%",
-                            "item": [
-                                {
-                                    "type": "Container",
-                                    "paddingLeft": "@marginLeft",
-                                    "paddingRight": "@marginRight",
-                                    "items": [
-                                        {
-                                            "type": "Text",
-                                            "height": "100%",
-                                            "text": "${title}",
-                                            "size": "@textSizeBody",
-                                            "spacing": "@spacingSmall",
-                                            "style": "textStyleTitle"
-                                        },
-                                        {
-                                            "type": "Text",
-                                            "height": "100%",
-                                            "text": "${text}",
-                                            "size": "@textSizeBody",
-                                            "spacing": "@spacingSmall",
-                                            "style": "textStyleBody"
-                                        }
-                                    ]
-                                }
-                            ]
-                        }
-                    ]
-                },
-                {
                     "type": "Container",
                     "width": "100vw",
                     "height": "100vh",
@@ -477,26 +361,6 @@
                             "type": "AlexaHeader",
                             "headerTitle": "${subreddit}",
                             "headerAttributionImage": "${@subreddit_logo == '' ? '@pagesLogo' : '@subreddit_logo'}"
-                        },
-                        {
-                            "type": "BookmarkContainer",
-                            "when": "${bookmarked == 'false'}",
-                            "postid": "${postid}"
-                        },
-                        {
-                            "type": "UnBookmarkContainer",
-                            "when": "${bookmarked == 'true'}",
-                            "postid": "${postid}"
-                        },
-                        {
-                            "type": "VoteContainer",
-                            "when": "${!upvoted}",
-                            "postid": "${postid}"
-                        },
-                        {
-                            "type": "UnVoteContainer",
-                            "when": "${upvoted == 'true'}",
-                            "postid": "${postid}"
                         },
                         {
                             "type": "Container",
@@ -590,74 +454,6 @@
             ],
             "items": [
                 {
-                    "when": "${viewport.shape == 'round'}",
-                    "type": "Container",
-                    "direction": "column",
-                    "width": "100vw",
-                    "height": "100vh",
-                    "items": [
-                        {
-                            "type": "Image",
-                            "source": "@pagesBackground",
-                            "scale": "best-fit",
-                            "width": "100vw",
-                            "height": "100vh",
-                            "position": "absolute",
-                            "scrim": true
-                        },
-                        {
-                            "type": "AlexaHeader",
-                            "headerTitle": "${subreddit}",
-                            "headerAttributionImage": "${subreddit_logo == '' ? '@pagesLogo' : subreddit_logo}"
-                        },
-                        {
-                            "type": "BookmarkContainer",
-                            "when": "${bookmarked == 'false'}",
-                            "postid": "${postid}"
-                        },
-                        {
-                            "type": "UnBookmarkContainer",
-                            "when": "${bookmarked == 'true'}",
-                            "postid": "${postid}"
-                        },
-                        {
-                            "type": "VoteContainer",
-                            "when": "${!upvoted}",
-                            "postid": "${postid}"
-                        },
-                        {
-                            "type": "UnVoteContainer",
-                            "when": "${upvoted == 'true'}",
-                            "postid": "${postid}"
-                        },
-                        {
-                            "type": "Container",
-                            "grow": 1,
-                            "justifyContent": "${viewport.shape == 'round' ? 'center' : 'end'}",
-                            "items": [
-                                {
-                                    "type": "ScrollView",
-                                    "height": "100%",
-                                    "item": [
-                                        {
-                                            "paddingLeft": "@marginLeft",
-                                            "paddingRight": "@marginRight",
-                                            "type": "Text",
-                                            "text": "${title}",
-                                            "style": "textStyleTitle",
-                                            "align": "${viewport.shape == 'round' ? 'center' : 'left'}"
-                                        }
-                                    ]
-                                }
-                            ]
-                        },
-                        {
-                            "type": "AlexaFooter",
-                            "footerHint": "${hint}"
-                        }
-                    ]
-                },
-                {
                     "type": "Container",
                     "width": "100vw",
                     "height": "100vh",
@@ -674,26 +470,6 @@
                             "type": "AlexaHeader",
                             "headerTitle": "${subreddit}",
                             "headerAttributionImage": "${subreddit_logo == '' ? '@pagesLogo' : subreddit_logo}"
-                        },
-                        {
-                            "type": "BookmarkContainer",
-                            "when": "${bookmarked == 'false'}",
-                            "postid": "${postid}"
-                        },
-                        {
-                            "type": "UnBookmarkContainer",
-                            "when": "${bookmarked == 'true'}",
-                            "postid": "${postid}"
-                        },
-                        {
-                            "type": "VoteContainer",
-                            "when": "${!upvoted}",
-                            "postid": "${postid}"
-                        },
-                        {
-                            "type": "UnVoteContainer",
-                            "when": "${upvoted == 'true'}",
-                            "postid": "${postid}"
                         },
                         {
                             "type": "Container",
