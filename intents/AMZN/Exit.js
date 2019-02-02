@@ -10,6 +10,7 @@ const ExitHandler = {
 
     return handlerInput.responseBuilder
       .speak(speakOutput)
+      .withShouldEndSession(true)
       .getResponse()
   }
 }
