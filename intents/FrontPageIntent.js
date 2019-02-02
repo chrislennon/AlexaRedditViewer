@@ -83,7 +83,7 @@ const FrontPageHandler = {
         if (sortSlot != '') {
           speakOutput += requestAttributes.t('SORTED_PAGE', sortSlot)
         } else {
-          speakOutput += '.'
+          speakOutput += '. '
         }
         speakOutput += requestAttributes.t("PAGE_ACTION")
         speakOutput += '</speak>'
