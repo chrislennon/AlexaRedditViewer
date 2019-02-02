@@ -5,8 +5,9 @@ const document = require('../APL/document').pagerDocument
 
 const FrontPageHandler = {
   canHandle (handlerInput) {
-    return handlerInput.requestEnvelope.request.type === 'IntentRequest' &&
-           handlerInput.requestEnvelope.request.intent.name === 'FrontPageIntent'
+    return (handlerInput.requestEnvelope.request.type === 'IntentRequest' &&
+           handlerInput.requestEnvelope.request.intent.name === 'FrontPageIntent') ||
+           handlerInput.requestEnvelope.request.type === 'LaunchRequest'
   },
   handle (handlerInput) {
     const requestAttributes = handlerInput.attributesManager.getRequestAttributes()

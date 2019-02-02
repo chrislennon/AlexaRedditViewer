@@ -12,7 +12,6 @@ const UserEventHandler = require('./intents/UserEvent').UserEventHandler
 const FeatureUnavailableHandler = require('./intents/FeatureUnavailable').FeatureUnavailableHandler
 const RefreshHandler = require('./intents/RefreshIntent').RefreshHandler
 
-const LaunchRequestHandler = require('./intents/AMZN/LaunchRequestHandler').LaunchRequestHandler
 const HelpHandler = require('./intents/AMZN/HelpIntent').HelpHandler
 const RepeatHandler = require('./intents/AMZN/RepeatIntent').RepeatHandler
 const ExitHandler = require('./intents/AMZN/Exit').ExitHandler
@@ -46,7 +45,6 @@ const LocalizationInterceptor = {
 /* LAMBDA SETUP */
 exports.handler = skillBuilder
   .addRequestHandlers(
-    LaunchRequestHandler,
     FrontPageHandler,
     FeatureUnavailableHandler,
     FallbackIntentHandler,
