@@ -52,7 +52,7 @@ const layout = {
                     {
                         "type": "Image",
                         "source": "${image == '' ? '@pagesBackground' : image}",
-                        "scale": "best-fill",
+                        "scale": "best-fit",
                         "width": "100vw",
                         "height": "100vh",
                         "position": "absolute",
@@ -63,7 +63,8 @@ const layout = {
                         "headerTitle": "${subreddit}",
                         "headerAttributionImage": "${subreddit_logo == '' ? '@pagesLogo' : subreddit_logo}"
                     },
-                    //buttons.bookmarkContainer,
+                    buttons.bookmarkContainer,
+                    buttons.voteContainer,
                     {
                         "type": "ScrollView",
                         "height": "100%",
@@ -192,7 +193,7 @@ const layout = {
                     {
                         "type": "Image",
                         "source": "@pagesBackground",
-                        "scale": "best-fill",
+                        "scale": "best-fit",
                         "width": "100vw",
                         "height": "100vh",
                         "position": "absolute",
@@ -203,6 +204,8 @@ const layout = {
                         "headerTitle": "${subreddit}",
                         "headerAttributionImage": "${subreddit_logo}"
                     },
+                    buttons.bookmarkContainer,
+                    buttons.voteContainer,
                     {
                         "type": "ScrollView",
                         "height": "100%",
@@ -343,7 +346,7 @@ const layout = {
                     {
                         "type": "Image",
                         "source": "@pagesBackground",
-                        "scale": "best-fill",
+                        "scale": "best-fit",
                         "width": "100vw",
                         "height": "100vh",
                         "position": "absolute",
@@ -354,6 +357,8 @@ const layout = {
                         "headerTitle": "${subreddit}",
                         "headerAttributionImage": "${subreddit_logo == '' ? '@pagesLogo' : subreddit_logo}"
                     },
+                    buttons.bookmarkContainer,
+                    buttons.voteContainer,
                     {
                         "type": "Container",
                         "grow": 1,
