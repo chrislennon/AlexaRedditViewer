@@ -75,6 +75,14 @@
             "fontSize": "@textSizeBody",
             "color": "@colorTextPrimary"
         }
+    },
+    "textStyleBodySpot": {
+        "values": {
+            "fontFamily": "Amazon Ember Display",
+            "fontStyle": "bold",
+            "fontSize": "@textSizeSecondary",
+            "color": "@colorTextPrimary"
+        }
     }
   }
 }

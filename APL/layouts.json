@@ -24,7 +24,7 @@
                     "type": "Container",
                     "direction": "row",
                     "height": 64,
-                    "width": "100%",
+                    "width": "100vw",
                     "justifyContent": "${viewport.shape == 'round' ? 'center' : 'end'}",
                     "paddingLeft": "@marginLeft",
                     "paddingRight": "@marginRight",
@@ -238,6 +238,8 @@
                             "scale": "best-fit",
                             "width": "100vw",
                             "height": "100vh",
+                            "repeatCount": -1,
+                            "autoplay": true,
                             "position": "absolute"
                         },
                         {
@@ -264,24 +266,40 @@
                         },
                         {
                             "type": "Container",
-                            "grow": 1,
-                            "justifyContent": "${viewport.shape == 'round' ? 'center' : 'end'}",
+                            "height": "100vh",
                             "items": [
                                 {
                                     "type": "Frame",
                                     "backgroundColor": "rgba(0,0,0,0.2)",
+                                    "width": "100vw",
                                     "item": [
                                         {
-                                            "paddingLeft": "@marginLeft",
-                                            "paddingRight": "@marginRight",
-                                            "type": "Text",
-                                            "text": "${title}",
-                                            "style": "textStyleTitle",
-                                            "align": "${viewport.shape == 'round' ? 'center' : 'left'}"
-                                        },
-                                        {
-                                            "type": "AlexaFooter",
-                                            "footerHint": "${hint}"
+                                            "type": "Container",
+                                            "height": "${viewport.shape == 'round' ? '50vh' : '90vh'}",
+                                            "width": "${viewport.shape == 'round' ? '70vw' : '100vw'}",
+                                            "justifyContent": "${viewport.shape == 'round' ? 'start' : 'start'}",
+                                            "items": [
+                                                {
+                                                    "type": "ScrollView",
+                                                    "height": "${viewport.shape == 'round' ? '50vh' : '90vh'}",
+                                                    "item": [
+                                                        {
+                                                            "paddingTop": "100",
+                                                            "paddingLeft": "@marginLeft",
+                                                            "paddingRight": "@marginRight",
+                                                            "paddingBottom": "30",
+                                                            "type": "Text",
+                                                            "text": "${title}",
+                                                            "style": "${viewport.shape == 'round' ? 'textStyleBodySpot' : 'textStyleTitle'}"
+                                                        }
+                                                    ]
+                                                },
+                                                {
+                                                    "when": "${viewport.shape != 'round'}",
+                                                    "type": "AlexaFooter",
+                                                    "footerHint": "${hint}"
+                                                }
+                                            ]
                                         }
                                     ]
                                 }
@@ -378,15 +396,17 @@
                                 },
                                 {
                                     "type": "ScrollView",
-                                    "height": "100%",
+                                    "height": "100vh",
                                     "item": [
                                         {
                                             "type": "Text",
-                                            "height": "100%",
+                                            "height": "100vh",
                                             "text": "${text}",
                                             "size": "@textSizeBody",
                                             "spacing": "@spacingSmall",
-                                            "style": "textStyleBody"
+                                            "style": "textStyleBody",
+                                            "textAlign": "${viewport.shape == 'round' ? 'center' : 'left'}",
+                                            "textAlignVertical": "${viewport.shape == 'round' ? 'center' : 'bottom'}"
                                         }
                                     ]
                                 }
@@ -462,8 +482,8 @@
                             "type": "Image",
                             "source": "@pagesBackground",
                             "scale": "best-fit",
-                            "width": "100%",
-                            "height": "100%",
+                            "width": "100vw",
+                            "height": "100vh",
                             "position": "absolute"
                         },
                         {
@@ -473,7 +493,6 @@
                         },
                         {
                             "type": "Container",
-                            "grow": 1,
                             "justifyContent": "${viewport.shape == 'round' ? 'center' : 'end'}",
                             "items": [
                                 {
@@ -482,7 +501,8 @@
                                     "type": "Text",
                                     "text": "${title}",
                                     "style": "textStyleTitle",
-                                    "align": "${viewport.shape == 'round' ? 'center' : 'left'}"
+                                    "textAlign": "${viewport.shape == 'round' ? 'center' : 'left'}",
+                                    "textAlignVertical": "${viewport.shape == 'round' ? 'center' : 'bottom'}"
                                 }
                             ]
                         },

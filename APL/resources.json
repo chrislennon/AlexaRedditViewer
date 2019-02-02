@@ -40,6 +40,8 @@
       {
           "description": "Common margins and padding",
           "dimensions": {
+              "largeMargin": 70,
+              "smallMargin": 20,
               "marginTop": 40,
               "marginLeft": 60,
               "marginRight": 60,
