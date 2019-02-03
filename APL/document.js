@@ -34,6 +34,7 @@ const pagerDocument = {
             "width": "100vw",
             "height": "100vh",
             "data": "${payload.postData.data}",
+            "navigation": "wrap",
             "items": [
                 {
                     "type": "PagerItem",

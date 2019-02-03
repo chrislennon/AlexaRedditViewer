@@ -274,22 +274,27 @@
                             "when": "${video == ''}",
                             "source": "${image == '' ? '@pagesBackground' : image}",
                             "scale": "best-fit",
-                            "width": "100vw",
-                            "height": "100vh",
+                            "width": "${viewport.shape == 'round' ? '70vw' : '100vw'}",
+                            "height": "${viewport.shape == 'round' ? '70vh' : '100vh'}",
+                            "align": "center",
                             "repeatCount": -1,
                             "autoplay": true,
-                            "position": "absolute"
+                            "position": "absolute",
+                            "left": "${viewport.shape == 'round' ? 72.5 : 0}",
+                            "top": "${viewport.shape == 'round' ? 72.5 : 0}"
                         },
                         {
                             "type": "Video",
                             "when": "${image == ''}",
                             "source": "${video}",
                             "scale": "best-fit",
-                            "width": "100vw",
-                            "height": "100vh",
+                            "width": "${viewport.shape == 'round' ? '70vw' : '100vw'}",
+                            "height": "${viewport.shape == 'round' ? '70vh' : '100vh'}",
                             "repeatCount": -1,
                             "autoplay": true,
-                            "position": "absolute"
+                            "position": "absolute",
+                            "left": "${viewport.shape == 'round' ? 72.5 : 0}",
+                            "top": "${viewport.shape == 'round' ? 72.5 : 0}"
                         },
                         {
                             "type": "AlexaHeader",
@@ -323,14 +328,12 @@
                                             "items": [
                                                 {
                                                     "type": "ScrollView",
-                                                    "height": "${viewport.shape == 'round' ? '50vh' : '90vh'}",
+                                                    "height": "${viewport.shape == 'round' ? '50vh' : '50vh'}",
                                                     "paddingBottom": "30dp",
                                                     "item": [
                                                         {
-                                                            
                                                             "paddingLeft": "@marginLeft",
                                                             "paddingRight": "@marginRight",
-                                                            
                                                             "type": "Text",
                                                             "text": "${title}",
                                                             "style": "${viewport.shape == 'round' ? 'textStyleBodySpot' : 'textStyleTitle'}",
