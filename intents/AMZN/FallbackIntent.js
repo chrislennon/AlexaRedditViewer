@@ -1,5 +1,3 @@
-const util = require('util')
-
 const FallbackIntentHandler = {
   canHandle (handlerInput) {
     return handlerInput.requestEnvelope.request.type === 'IntentRequest' &&
