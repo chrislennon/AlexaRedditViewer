@@ -243,7 +243,7 @@
                     "type": "string"
                 },
                 {
-                    "name": "text",
+                    "name": "body",
                     "type": "string"
                 },
                 {
@@ -393,7 +393,7 @@
                     "type": "string"
                 },
                 {
-                    "name": "text",
+                    "name": "body",
                     "type": "string"
                 },
                 {
@@ -441,31 +441,58 @@
                         },
                         {
                             "type": "Container",
-                            "height": "60vh",
-                            "width": "100vw",
-                            "paddingLeft": "@marginLeft",
-                            "paddingRight": "@marginRight",
-                            "paddingBottom": "@marginBottom",
+                            "height": "${viewport.shape == 'round' ? '50vh' : '90vh'}",
+                            "justifyContent": "${viewport.shape == 'round' ? 'center' : 'start'}",
                             "items": [
                                 {
-                                    "type": "Text",
-                                    "text": "${title}",
-                                    "style": "textStyleTitle",
-                                    "align": "${viewport.shape == 'round' ? 'center' : 'left'}"
-                                },
-                                {
-                                    "type": "ScrollView",
-                                    "height": "100vh",
+                                    "type": "Frame",
+                                    "backgroundColor": "rgba(0,0,0,0.2)",
+                                    "width": "100vw",
                                     "item": [
                                         {
-                                            "type": "Text",
-                                            "height": "100vh",
-                                            "text": "${text}",
-                                            "size": "@textSizeBody",
-                                            "spacing": "@spacingSmall",
-                                            "style": "textStyleBody",
-                                            "textAlign": "${viewport.shape == 'round' ? 'center' : 'left'}",
-                                            "textAlignVertical": "${viewport.shape == 'round' ? 'center' : 'bottom'}"
+                                            "type": "Container",
+                                            "height": "${viewport.shape == 'round' ? '50vh' : '90vh'}",
+                                            "width": "${viewport.shape == 'round' ? '100vw' : '100vw'}",
+                                            "paddingLeft": "@marginLeft",
+                                            "paddingRight": "@marginRight",
+                                            "justifyContent": "${viewport.shape == 'round' ? 'center' : 'start'}",
+                                            "items": [
+                                                {
+                                                    "type": "ScrollView",
+                                                    "height": "${viewport.shape == 'round' ? '30vh' : '30vh'}",
+                                                    "item": [
+                                                        {
+                                                            "paddingLeft": "@marginLeft",
+                                                            "paddingRight": "@marginRight",
+                                                            "type": "Text",
+                                                            "text": "${title}",
+                                                            "style": "${viewport.shape == 'round' ? 'textStyleBodySpot' : 'textStyleTitle'}",
+                                                            "textAlign": "${viewport.shape == 'round' ? 'center' : 'left'}",
+                                                            "width": "${viewport.shape == 'round' ? '80vw' : '90vw'}"
+                                                        }
+                                                    ]
+                                                },
+                                                {
+                                                    "type": "ScrollView",
+                                                    "height": "${viewport.shape == 'round' ? '20vh' : '30vh'}",
+                                                    "item": [
+                                                        {
+                                                            "paddingLeft": "@marginLeft",
+                                                            "paddingRight": "@marginRight",
+                                                            "type": "Text",
+                                                            "text": "${body}",
+                                                            "style": "${viewport.shape == 'round' ? 'textStyleBodySpot' : 'textStyleBodySpot'}",
+                                                            "textAlign": "${viewport.shape == 'round' ? 'center' : 'left'}",
+                                                            "width": "${viewport.shape == 'round' ? '80vw' : '90vw'}"
+                                                        }
+                                                    ]
+                                                },
+                                                {
+                                                    "when": "${viewport.shape != 'round'}",
+                                                    "type": "AlexaFooter",
+                                                    "footerHint": "${hint}"
+                                                }
+                                            ]
                                         }
                                     ]
                                 }
@@ -515,7 +542,7 @@
                     "type": "string"
                 },
                 {
-                    "name": "text",
+                    "name": "body",
                     "type": "string"
                 },
                 {
@@ -562,23 +589,41 @@
                             "redditLink": "${redditLink}"
                         },
                         {
-                            "type": "Container",
-                            "justifyContent": "${viewport.shape == 'round' ? 'center' : 'end'}",
-                            "items": [
+                            "type": "Frame",
+                            "backgroundColor": "rgba(0,0,0,0.2)",
+                            "width": "100vw",
+                            "item": [
                                 {
+                                    "type": "Container",
+                                    "height": "${viewport.shape == 'round' ? '50vh' : '90vh'}",
+                                    "width": "${viewport.shape == 'round' ? '100vw' : '100vw'}",
                                     "paddingLeft": "@marginLeft",
                                     "paddingRight": "@marginRight",
-                                    "type": "Text",
-                                    "text": "${title}",
-                                    "style": "textStyleTitle",
-                                    "textAlign": "${viewport.shape == 'round' ? 'center' : 'left'}",
-                                    "textAlignVertical": "${viewport.shape == 'round' ? 'center' : 'bottom'}"
+                                    "justifyContent": "${viewport.shape == 'round' ? 'center' : 'start'}",
+                                    "items": [
+                                        {
+                                            "type": "ScrollView",
+                                            "height": "${viewport.shape == 'round' ? '30vh' : '50vh'}",
+                                            "item": [
+                                                {
+                                                    "paddingLeft": "@marginLeft",
+                                                    "paddingRight": "@marginRight",
+                                                    "type": "Text",
+                                                    "text": "${title}",
+                                                    "style": "${viewport.shape == 'round' ? 'textStyleBodySpot' : 'textStyleTitle'}",
+                                                    "textAlign": "${viewport.shape == 'round' ? 'center' : 'left'}",
+                                                    "width": "${viewport.shape == 'round' ? '80vw' : '90vw'}"
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "when": "${viewport.shape != 'round'}",
+                                            "type": "AlexaFooter",
+                                            "footerHint": "${hint}"
+                                        }
+                                    ]
                                 }
                             ]
-                        },
-                        {
-                            "type": "AlexaFooter",
-                            "footerHint": "${hint}"
                         }
                     ]
                 }
@@ -594,6 +639,7 @@
             "items": [
                 {
                     "type": "TitleImage",
+                    "when": "${data.outputType == 'TitleImage'}",
                     "outputType": "${data.outputType}",
                     "hint": "${hint}",
                     "title": "${data.strings.title}",
@@ -602,7 +648,7 @@
                     "score": "${data.strings.score}",
                     "subreddit": "${data.strings.subreddit}",
                     "subreddit_logo": "${data.strings.subreddit_logo}",
-                    "text": "${data.strings.text}",
+                    "body": "${data.strings.text}",
                     "postid" : "${data.strings.postid}",
                     "upvoted": "${data.strings.upvoted}",
                     "bookmarked": "${data.strings.bookmarked}",
@@ -610,6 +656,7 @@
                 },
                 {
                     "type": "TitleBody",
+                    "when": "${data.outputType == 'TitleBody'}",
                     "outputType": "${data.outputType}",
                     "hint": "${hint}",
                     "title": "${data.strings.title}",
@@ -618,7 +665,7 @@
                     "score": "${data.strings.score}",
                     "subreddit": "${data.strings.subreddit}",
                     "subreddit_logo": "${data.strings.subreddit_logo}",
-                    "text": "${data.strings.text}",
+                    "body": "${data.strings.text}",
                     "postid" : "${data.strings.postid}",
                     "upvoted": "${data.strings.upvoted}",
                     "bookmarked": "${data.strings.bookmarked}",
@@ -626,6 +673,7 @@
                 },
                 {
                     "type": "TitleOnly",
+                    "when": "${data.outputType == 'TitleOnly'}",
                     "outputType": "${data.outputType}",
                     "hint": "${hint}",
                     "title": "${data.strings.title}",
@@ -634,7 +682,7 @@
                     "score": "${data.strings.score}",
                     "subreddit": "${data.strings.subreddit}",
                     "subreddit_logo": "${data.strings.subreddit_logo}",
-                    "text": "${data.strings.text}",
+                    "body": "${data.strings.text}",
                     "postid" : "${data.strings.postid}",
                     "upvoted": "${data.strings.upvoted}",
                     "bookmarked": "${data.strings.bookmarked}",

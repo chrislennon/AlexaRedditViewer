@@ -42,13 +42,15 @@ const pagerDocument = {
                     "bookmarked": "${data.strings.bookmarked}",
                     "upvoted": "${data.strings.upvoted}",
                     "hint": "${payload.hint.string}",
-                    "title": "${data.strings.title}",
+                    "title": "${data.outputType}",
+                    "body": "${data.strings.text}",
                     "image": "${data.strings.image}",
                     "postid": "${data.strings.postid}",
                     "video": "${data.strings.video}",
                     "score": "${data.strings.score}",
                     "subreddit": "${data.strings.subreddit}",
-                    "subreddit_logo": "${data.strings.subreddit_logo}"
+                    "subreddit_logo": "${data.strings.subreddit_logo}",
+                    "redditLink": "${data.original}"
                 }
             ]
         }
