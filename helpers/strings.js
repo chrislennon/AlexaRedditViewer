@@ -23,6 +23,7 @@ const languageStrings = {
       FEATURE_UNAVILALBE: 'This feature is currently unavailable by voice, please use the on-screen buttons',
       FALLBACK_MESSAGE: 'Sorry, I\'m not sure how to help you with that, please say \'help\' to hear what you can do.',
       FALLBACK_REPROMT: 'Say help for more information on what you can do.',
+      SENT_CARD: 'I\'ve send this post to your Alexa app',
     }
   },
   'en-US': {
@@ -49,6 +50,7 @@ const languageStrings = {
       FEATURE_UNAVILALBE: 'This feature is currently unavailable by voice, please use the on-screen buttons',
       FALLBACK_MESSAGE: 'Sorry, I\'m not sure how to help you with that, please say \'help\' to hear what you can do.',
       FALLBACK_REPROMT: 'Say help for more information on what you can do.',
+      SENT_CARD: 'I\'ve send this post to your Alexa app',
     }
   },
   'en-GB': {
@@ -75,6 +77,7 @@ const languageStrings = {
       FEATURE_UNAVILALBE: 'This feature is currently unavailable by voice, please use the on-screen buttons',
       FALLBACK_MESSAGE: 'Sorry, I\'m not sure how to help you with that, please say \'help\' to hear what you can do.',
       FALLBACK_REPROMT: 'Say help for more information on what you can do.',
+      SENT_CARD: 'I\'ve send this post to your Alexa app',
     }
   },
   'en-AU': {
@@ -101,6 +104,7 @@ const languageStrings = {
       FEATURE_UNAVILALBE: 'This feature is currently unavailable by voice, please use the on-screen buttons',
       FALLBACK_MESSAGE: 'Sorry, I\'m not xsure how to help you with that, please say \'help\' to hear what you can do.',
       FALLBACK_REPROMT: 'Say help for more information on what you can do.',
+      SENT_CARD: 'I\'ve send this post to your Alexa app',
     }
   },
   'en-IN': {
@@ -127,6 +131,7 @@ const languageStrings = {
       FEATURE_UNAVILALBE: 'This feature is currently unavailable by voice, please use the on-screen buttons',
       FALLBACK_MESSAGE: 'Sorry, I\'m not sure how to help you with that, please say \'help\' to hear what you can do.',
       FALLBACK_REPROMT: 'Say help for more information on what you can do.',
+      SENT_CARD: 'I\'ve send this post to your Alexa app',
     }
   },
   'en-CA': {
@@ -153,6 +158,7 @@ const languageStrings = {
       FEATURE_UNAVILALBE: 'This feature is currently unavailable by voice, please use the on-screen buttons',
       FALLBACK_MESSAGE: 'Sorry, I\'m not sure how to help you with that, please say \'help\' to hear what Reddit Viewer can do.',
       FALLBACK_REPROMT: 'Say help for more information on what Reddit Viewer can do.',
+      SENT_CARD: 'I\'ve send this post to your Alexa app',
     }
   }
 }

@@ -56,6 +56,15 @@ const UserEventHandler = {
           .speak(requestAttributes.t('UPVOTE_REMOVE_MESSAGE'))
           .withShouldEndSession(false)
           .getResponse()
+      } else if (arguments[0] == 'SendToDeviceSelected') { 
+        let redditLink = arguments[1]
+        console.log(requestAttributes.t('SKILL_NAME') + ' card', redditLink)
+        return handlerInput.responseBuilder
+          //.withSimpleCard('Reddit Viewer', 'LinkGoesHere')
+          .withStandardCard('Reddit Viewer', 'https://reddit.com', 'https://s3-eu-west-1.amazonaws.com/reddit-alexa-assets/reddit.png', 'https://s3-eu-west-1.amazonaws.com/reddit-alexa-assets/reddit.png')
+          .speak(requestAttributes.t('SENT_CARD'))
+          .withShouldEndSession(false)
+          .getResponse()
       }
     })()
   }

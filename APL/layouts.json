@@ -17,6 +17,10 @@
                 {
                     "name": "upvoted",
                     "type": "string"
+                },
+                {
+                    "name": "redditLink",
+                    "type": "string"
                 }
             ],
             "items": [
@@ -51,6 +55,36 @@
                         }
                     ]
                 }
+            ]
+        },
+        "SendToDeviceContainer": {
+            "parameters": [
+                {
+                    "name": "redditLink",
+                    "type": "string"
+                }
+            ],
+            "type": "Container",
+            "items": [
+              {
+                "type": "TouchWrapper",
+                "onPress": {
+                  "type": "SendEvent",
+                  "arguments": [
+                    "SendToDeviceSelected",
+                    "${redditLink}"
+                  ]
+                },
+                "item": [
+                  {
+                    "type": "Image",
+                    "source": "https://s3-eu-west-1.amazonaws.com/reddit-alexa-assets/paper-plane-o.png",
+                    "scale": "best-fit",
+                    "height": "64",
+                    "width": "64"
+                  }
+                ]
+              }
             ]
         },
         "BookmarkContainer": {
@@ -223,6 +257,10 @@
                 {
                     "name": "postid",
                     "type": "string"
+                },
+                {
+                    "name": "redditLink",
+                    "type": "string"
                 }
             ],
             "items": [
@@ -262,11 +300,13 @@
                             "type": "ActionButtons",
                             "postid": "${postid}",
                             "bookmarked": "${bookmarked}",
-                            "upvoted": "${upvoted}"
+                            "upvoted": "${upvoted}",
+                            "redditLink": "${redditLink}"
                         },
                         {
                             "type": "Container",
-                            "height": "100vh",
+                            "height": "${viewport.shape == 'round' ? '50vh' : '90vh'}",
+                            "justifyContent": "${viewport.shape == 'round' ? 'center' : 'start'}",
                             "items": [
                                 {
                                     "type": "Frame",
@@ -276,21 +316,26 @@
                                         {
                                             "type": "Container",
                                             "height": "${viewport.shape == 'round' ? '50vh' : '90vh'}",
-                                            "width": "${viewport.shape == 'round' ? '70vw' : '100vw'}",
-                                            "justifyContent": "${viewport.shape == 'round' ? 'start' : 'start'}",
+                                            "width": "${viewport.shape == 'round' ? '100vw' : '100vw'}",
+                                            "paddingLeft": "@marginLeft",
+                                            "paddingRight": "@marginRight",
+                                            "justifyContent": "${viewport.shape == 'round' ? 'center' : 'start'}",
                                             "items": [
                                                 {
                                                     "type": "ScrollView",
                                                     "height": "${viewport.shape == 'round' ? '50vh' : '90vh'}",
+                                                    "paddingBottom": "30dp",
                                                     "item": [
                                                         {
-                                                            "paddingTop": "100",
+                                                            
                                                             "paddingLeft": "@marginLeft",
                                                             "paddingRight": "@marginRight",
-                                                            "paddingBottom": "30",
+                                                            
                                                             "type": "Text",
                                                             "text": "${title}",
-                                                            "style": "${viewport.shape == 'round' ? 'textStyleBodySpot' : 'textStyleTitle'}"
+                                                            "style": "${viewport.shape == 'round' ? 'textStyleBodySpot' : 'textStyleTitle'}",
+                                                            "textAlign": "${viewport.shape == 'round' ? 'center' : 'left'}",
+                                                            "width": "${viewport.shape == 'round' ? '80vw' : '90vw'}"
                                                         }
                                                     ]
                                                 },
@@ -359,6 +404,10 @@
                 {
                     "name": "postid",
                     "type": "string"
+                },
+                {
+                    "name": "redditLink",
+                    "type": "string"
                 }
             ],
             "items": [
@@ -379,6 +428,13 @@
                             "type": "AlexaHeader",
                             "headerTitle": "${subreddit}",
                             "headerAttributionImage": "${@subreddit_logo == '' ? '@pagesLogo' : '@subreddit_logo'}"
+                        },
+                        {
+                            "type": "ActionButtons",
+                            "postid": "${postid}",
+                            "bookmarked": "${bookmarked}",
+                            "upvoted": "${upvoted}",
+                            "redditLink": "${redditLink}"
                         },
                         {
                             "type": "Container",
@@ -470,6 +526,10 @@
                 {
                     "name": "postid",
                     "type": "string"
+                },
+                {
+                    "name": "redditLink",
+                    "type": "string"
                 }
             ],
             "items": [
@@ -490,6 +550,13 @@
                             "type": "AlexaHeader",
                             "headerTitle": "${subreddit}",
                             "headerAttributionImage": "${subreddit_logo == '' ? '@pagesLogo' : subreddit_logo}"
+                        },
+                        {
+                            "type": "ActionButtons",
+                            "postid": "${postid}",
+                            "bookmarked": "${bookmarked}",
+                            "upvoted": "${upvoted}",
+                            "redditLink": "${redditLink}"
                         },
                         {
                             "type": "Container",
@@ -535,7 +602,8 @@
                     "text": "${data.strings.text}",
                     "postid" : "${data.strings.postid}",
                     "upvoted": "${data.strings.upvoted}",
-                    "bookmarked": "${data.strings.bookmarked}"
+                    "bookmarked": "${data.strings.bookmarked}",
+                    "redditLink": "${data.original}"
                 },
                 {
                     "type": "TitleBody",
@@ -550,7 +618,8 @@
                     "text": "${data.strings.text}",
                     "postid" : "${data.strings.postid}",
                     "upvoted": "${data.strings.upvoted}",
-                    "bookmarked": "${data.strings.bookmarked}"
+                    "bookmarked": "${data.strings.bookmarked}",
+                    "redditLink": "${data.original}"
                 },
                 {
                     "type": "TitleOnly",
@@ -565,7 +634,8 @@
                     "text": "${data.strings.text}",
                     "postid" : "${data.strings.postid}",
                     "upvoted": "${data.strings.upvoted}",
-                    "bookmarked": "${data.strings.bookmarked}"
+                    "bookmarked": "${data.strings.bookmarked}",
+                    "redditLink": "${data.original}"
                 }
             ]
         }
