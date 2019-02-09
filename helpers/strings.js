@@ -8,7 +8,7 @@ const languageStrings = {
       HELP_REPROMPT: 'Why not ask me to show your front page sorted by hot? Now, what can I help you with?',
       STOP_MESSAGE: 'Goodbye!',
       REPEAT_MESSAGE: 'Try saying repeat.',
-      ERROR_MESSAGE: 'I\'m sorry, I encountered an error. ',
+      ERROR_MESSAGE: 'I\'m sorry, I encountered an error, please say \'help\' to hear what Reddit Viewer can do. ',
       REPROMPT_MESSAGE: 'Try asking me to show your front page.',
       HINT_MESSAGE: ['Alexa, Next', 'Alexa, Back'],
       APL_REQUIRED: 'This device does not have a screen output, please use another device.',
