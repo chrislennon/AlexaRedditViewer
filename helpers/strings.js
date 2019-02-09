@@ -102,7 +102,7 @@ const languageStrings = {
       UPVOTE_ADD_MESSAGE: 'Upvoted.',
       UPVOTE_REMOVE_MESSAGE: 'Removed Upvote.',
       FEATURE_UNAVILALBE: 'This feature is currently unavailable by voice, please use the on-screen buttons',
-      FALLBACK_MESSAGE: 'Sorry, I\'m not xsure how to help you with that, please say \'help\' to hear what you can do.',
+      FALLBACK_MESSAGE: 'Sorry, I\'m not sure how to help you with that, please say \'help\' to hear what you can do.',
       FALLBACK_REPROMT: 'Say help for more information on what you can do.',
       SENT_CARD: 'I\'ve send this post to your Alexa app',
     }
