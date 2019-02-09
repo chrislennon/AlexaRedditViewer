@@ -35,22 +35,22 @@
                     "items": [
                         {
                             "type": "BookmarkContainer",
-                            "when": "${bookmarked == 'false'}",
+                            "when": "${bookmarked == false}",
                             "postid": "${postid}"
                         },
                         {
                             "type": "UnBookmarkContainer",
-                            "when": "${bookmarked == 'true'}",
+                            "when": "${bookmarked == true}",
                             "postid": "${postid}"
                         },
                         {
                             "type": "VoteContainer",
-                            "when": "${!upvoted}",
+                            "when": "${upvoted == null}",
                             "postid": "${postid}"
                         },
                         {
                             "type": "UnVoteContainer",
-                            "when": "${upvoted == 'true'}",
+                            "when": "${upvoted == true}",
                             "postid": "${postid}"
                         }
                     ]
