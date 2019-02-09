@@ -46,6 +46,7 @@ const LocalizationInterceptor = {
 exports.handler = skillBuilder
   .addRequestHandlers(
     FrontPageHandler,
+    UserEventHandler,
     FeatureUnavailableHandler,
     FallbackIntentHandler,
     RefreshHandler,
@@ -54,7 +55,6 @@ exports.handler = skillBuilder
     ExitHandler,
     NextHandler,
     PreviousHandler,
-    UserEventHandler,
     SessionEndedRequestHandler
   )
   .addRequestInterceptors(LocalizationInterceptor)
