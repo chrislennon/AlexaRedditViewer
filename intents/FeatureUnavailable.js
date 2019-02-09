@@ -2,14 +2,15 @@ const utils = require('../helpers/utils')
 
 const FeatureUnavailableHandler = {
   canHandle (handlerInput) {
+    console.log(handlerInput.requestEnvelope.request.intent.slots)
     return handlerInput.requestEnvelope.request.type === 'IntentRequest' &&
             // Vote or Bookmark Intent
            (handlerInput.requestEnvelope.request.intent.name === 'VoteIntent' ||
            handlerInput.requestEnvelope.request.intent.name === 'BookmarkIntent') && 
             // Slots have been filled
            (
-            handlerInput.requestEnvelope.request.intent.slots.vote.value ||
-            handlerInput.requestEnvelope.request.intent.slots.bookmark.value
+            handlerInput.requestEnvelope.request.intent.slots.vote ||
+            handlerInput.requestEnvelope.request.intent.slots.bookmark
            )
   },
   handle (handlerInput) {
