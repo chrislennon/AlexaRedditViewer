@@ -271,8 +271,8 @@
                     "items": [
                         {
                             "type": "Image",
-                            "when": "${video == ''}",
-                            "source": "${image == '' ? '@pagesBackground' : image}",
+                            "when": "${!video}",
+                            "source": "${image == null ? '@pagesBackground' : image}",
                             "scale": "best-fit",
                             "width": "${viewport.shape == 'round' ? '70vw' : '100vw'}",
                             "height": "${viewport.shape == 'round' ? '70vh' : '100vh'}",
@@ -283,7 +283,7 @@
                         },
                         {
                             "type": "Video",
-                            "when": "${image == ''}",
+                            "when": "${video}",
                             "source": "${video}",
                             "scale": "best-fit",
                             "width": "${viewport.shape == 'round' ? '70vw' : '100vw'}",

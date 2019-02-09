@@ -60,6 +60,9 @@ function pagerList (posts) {
       // console.log('FINAL text', text)
       // console.log('FINAL video', video)
 
+      if (image === '') image = null
+      if (video === '') video = null
+
       // Tweak output type based on available data
       listItems.push({
           "original": `https://www.reddit.com${posts[i].permalink}`,
