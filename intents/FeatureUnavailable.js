@@ -5,12 +5,7 @@ const FeatureUnavailableHandler = {
     return handlerInput.requestEnvelope.request.type === 'IntentRequest' &&
             // Vote or Bookmark Intent
            (handlerInput.requestEnvelope.request.intent.name === 'VoteIntent' ||
-           handlerInput.requestEnvelope.request.intent.name === 'BookmarkIntent') && 
-            // Slots have been filled
-           (
-            handlerInput.requestEnvelope.request.intent.slots.vote ||
-            handlerInput.requestEnvelope.request.intent.slots.bookmark
-           )
+           handlerInput.requestEnvelope.request.intent.name === 'BookmarkIntent')
   },
   handle (handlerInput) {
     const requestAttributes = handlerInput.attributesManager.getRequestAttributes()
